@@ -25,7 +25,7 @@ public class MaterialControlador {
 
 		Material material = new Material(); //se crea un material vacio
 		modelo.addAttribute("material", material); //se envia al modelo
-		return "/Materiales/Crear_Material"; //URL en donde retorna el metodo
+		return "Materiales/Crear_Material"; //URL en donde retorna el metodo
 
 	}
 

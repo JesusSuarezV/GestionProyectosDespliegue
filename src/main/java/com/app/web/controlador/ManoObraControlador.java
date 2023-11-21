@@ -31,7 +31,7 @@ public class ManoObraControlador {
 		
 		ManoObra manoObra = new ManoObra(); //se crea una Mano de Obra vacia
 		modelo.addAttribute("manoObra", manoObra); //se envia al modelo
-		return "/ManoObras/Crear_ManoObra"; //URL en donde retorna el metodo
+		return "ManoObras/Crear_ManoObra"; //URL en donde retorna el metodo
 
 	}
 

@@ -25,7 +25,7 @@ public class MaquinariaControlador {
 
 		Maquinaria maquinaria = new Maquinaria(); //se crea una maquinaria vacia
 		modelo.addAttribute("maquinaria", maquinaria); //se envia al modelo
-		return "/Maquinarias/Crear_Maquinaria"; //URL en donde retorna el metodo
+		return "Maquinarias/Crear_Maquinaria"; //URL en donde retorna el metodo
 
 	}
 

@@ -26,7 +26,7 @@ public class RecoveryControlador {
 	@GetMapping("/Recuperar_Contrasena")
 	public String mostrarFormularioDeRecuperarContraseña() {
 		
-		return "Recovery/Recuperar_Contraseña";
+		return "Recovery/Recuperar_Contrasena";
 	}
 	
 	@PostMapping("/Recuperar_Contrasena/Validar")

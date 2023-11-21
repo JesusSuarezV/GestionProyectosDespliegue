@@ -25,7 +25,7 @@ public class ItemControlador {
 
 		Item item = new Item(); //se crea un proyecto vacio
 		modelo.addAttribute("item", item); //se envia al modelo
-		return "/Items/Crear_Item"; //URL en donde retorna el metodo
+		return "Items/Crear_Item"; //URL en donde retorna el metodo
 
 	}
 

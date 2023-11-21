@@ -25,7 +25,7 @@ public class APUControlador {
 
 		APU apu = new APU(); //se crea un apu vacio
 		modelo.addAttribute("apu", apu); //se envia al modelo
-		return "/APU/Crear_APU"; //URL en donde retorna el metodo
+		return "APU/Crear_APU"; //URL en donde retorna el metodo
 
 	}
 

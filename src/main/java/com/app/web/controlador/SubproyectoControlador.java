@@ -42,7 +42,7 @@ public class SubproyectoControlador {
 		Subproyecto subproyecto = new Subproyecto(); //se crea un subproyecto vacio
 		modelo.addAttribute("Subproyecto", subproyecto); //se envia al modelo
 		modelo.addAttribute("proyecto", proyecto);
-		return "/Subproyectos/Crear_Subproyecto"; //plantilla que carga el metodo
+		return "Subproyectos/Crear_Subproyecto"; //plantilla que carga el metodo
 
 	}
 

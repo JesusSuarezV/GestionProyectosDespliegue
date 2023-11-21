@@ -35,7 +35,7 @@ public class ProyectoControlador {
 
 		Proyecto proyecto = new Proyecto(); //se crea un proyecto vacio
 		modelo.addAttribute("proyecto", proyecto); //se envia al modelo
-		return "/Proyectos/Crear_Proyecto"; //plantilla que carga el metodo
+		return "Proyectos/Crear_Proyecto"; //plantilla que carga el metodo
 
 	}
 
