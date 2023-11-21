@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crear Item</title>
+<div th:replace="Menu.html"></div>
+<div class="contenedor-principal" id="contenedor-move">
+	<a class="boton-volver" href="/Items">VOLVER</a>
+	<form th:action="@{/Items/Guardar}" th:object="${item}" method="POST">
+		<div class="contenedor-play-subproyecto">
+			<div class="proyecto-play">
+				<div class="nombre">
+					<a>CREACIÓN DEL ITEM</a>
+				</div>
+				<div class="ubicacion">
+					<a>NOMBRE</a>
+					<div class="texto">
+						<input class="cuadro-texto" type="text" id="nombre"
+							name="nombre" required>
+					</div>
+				</div>
+			</div>
+			<button type="submit" class="boton-subproyecto">CREAR ITEM</button>
+		</div>
+		</form>
+</div>
+</div>
+</div>
+<script th:src="@{/js/script.js}"></script>
+</body>
+
+</html>

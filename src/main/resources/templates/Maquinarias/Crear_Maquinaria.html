@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crear Maquinaria</title>
+<div th:replace="Menu.html"></div>
+<div class="contenedor-principal" id="contenedor-move">
+	<a class="boton-volver" href="/Maquinarias">VOLVER</a>
+	<form th:action="@{/Maquinarias/Guardar}" th:object="${maquinaria}" method="POST">
+		<div class="contenedor-play-subproyecto">
+			<div class="proyecto-play">
+				<div class="nombre">
+					<a>CREACIÓN DE LA MAQUINARIA</a>
+				</div>
+				<div class="ubicacion">
+					<a>NOMBRE</a>
+					<div class="texto">
+						<input class="cuadro-texto" type="text" id="nombre"
+							name="nombre" required>
+					</div>
+				</div>
+				<br>
+				<div class="ubicacion">
+					<a>UNIDAD</a>
+					<div class="texto">
+						<input class="cuadro-texto" type="text" id="unidad"
+							name="unidad" required>
+					</div>
+				</div>
+			</div>
+			<button type="submit" class="boton-subproyecto">CREAR MAQUINARIA</button>
+		</div>
+		</form>
+</div>
+</div>
+</div>
+<script th:src="@{/js/script.js}"></script>
+</body>
+
+</html>

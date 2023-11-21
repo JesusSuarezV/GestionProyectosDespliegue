@@ -1,0 +1,210 @@
+/*ver proyectos*/
+.cuerpo {
+    display: flex;
+}
+
+.contenedor {
+    margin-top: 40px;
+    margin-left: 100px;
+    margin-bottom: 40px;
+    margin-right: 100px;
+    padding: 20px;
+    width: 1000px;
+    background-color: #CCCCCC;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cuadro-proyectos {
+    display: flex;
+    width: 980px;
+    background-color: #FFA030;
+}
+
+.cuadro-proyectos img {
+    height: 180px;
+    width: auto;
+}
+
+.proyecto .nombre {
+    margin: 30px;
+    padding: 20px;
+    margin-bottom: 15px;
+    width: 700px;
+    background-color: white;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.logos-proyecto .icon-proyecto {
+    margin-left: 50px;
+    height: 60px;
+    width: auto;
+}
+
+/*reproducir proyecto*/
+.contenedor-principal {
+    margin-top: 40px;
+    margin-left: 100px;
+    margin-bottom: 40px;
+    margin-right: 100px;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.boton-volver {
+    width: fit-content;
+    margin-bottom: 20px;
+    margin-top: 0;
+    border: none;
+    padding: 10px 50px;
+    font-size: 18px;
+    color: white;
+    background-color: #3CADED;
+    border-radius: 30px;
+    margin-left: auto;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.boton-subproyecto {
+    width: fit-content;
+    margin-top: 100px;
+    border: none;
+    padding: 10px 50px;
+    font-size: 18px;
+    color: white;
+    background-color: #ED5C2E;
+    border-radius: 30px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.contenedor-play {
+    padding: 20px;
+    width: 1000px;
+    background-color: #CCCCCC;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.proyecto-play .nombre {
+    padding: 20px;
+    margin-bottom: 15px;
+    width: 700px;
+    background-color: white;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.ubicacion .nombre-ubicacion {
+    padding: 10px;
+    margin-bottom: 15px;
+    margin-right: 0;
+    width: 400px;
+    background-color: white;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.ubicacion {
+    width: 740px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contenedor-move {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/*crear proyecto*/
+.boton{
+    width: fit-content;
+    margin-bottom: 20px;
+    margin-top: 0;
+    border: none;
+    padding: 10px 50px;
+    font-size: 18px;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.botones{
+    margin-top: 30px;
+}
+
+.boton-verde{
+    background-color: #59B200;
+}
+
+.boton-rojo{
+    background-color: #ED5C2E;
+}
+
+.cuadro-texto{
+    border: none;
+    font-size: 18px;
+    border-radius: 30px;
+    padding: 10px;
+    width: 400px;
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedor-formulario{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.nombre-proyecto,
+.ubicacion-proyecto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*ver subproyectos*/
+.contenedor-play-subproyecto{
+    padding: 20px;
+    width: 900px;
+    margin-top: 30px;
+    background-color: #CCCCCC;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenedor-proyecto .nombre{
+    padding: 20px;
+    margin-bottom: 15px;
+    width: 500px;
+    background-color: white;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.contenedor-proyecto{
+    display: flex;
+}
+
+.contenedor-proyecto .icon-proyecto {
+    margin-left: 20px;
+    height: 50px;
+    width: auto;
+}

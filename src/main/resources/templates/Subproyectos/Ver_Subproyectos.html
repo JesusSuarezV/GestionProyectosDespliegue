@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Subproyectos</title>
+    <div th:replace="Menu.html"></div>
+        <div class="contenedor-principal" id="contenedor-move">
+            <a class="boton-volver" href="/Proyectos">VOLVER</a>
+            <div class="contenedor-play">
+                <div class="proyecto-play">
+                    <div class="nombre">
+                        <a th:text="${proyecto.getNombre()}"></a>
+                    </div>
+                    <div class="ubicacion">
+                        <a>UBICACIÓN</a>
+                        <div class="nombre-ubicacion">
+                            <a th:text="${proyecto.getUbicacion()}"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <tr th:each="subproyecto : ${subproyectos}">
+            <div class="contenedor-play-subproyecto">
+                <div class="proyecto-play">
+                    <div class="contenedor-proyecto">
+                        <div class="nombre">
+                            <a th:text="${subproyecto.nombre}"></a>
+                        </div>
+                        <div class="logos-proyecto">
+                            
+                            <a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Editar'}"><img class="icon-proyecto" src="../../imagenes/editar.png"></a>
+                            <a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Ocultar'}"><img class="icon-proyecto" src="../../imagenes/delete.png"></a>
+                        </div>
+                    </div>
+                    <div class="ubicacion">
+                        <a  th:text="'COSTO ' + ${subproyecto.getNombre()}" ></a>
+                        <div class="nombre-ubicacion">
+                            <a>0000000.00</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br></br>
+            </tr>
+            <a class="boton-subproyecto" th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/Nuevo_Subproyecto'}">CREAR SUBPROYECTO</a>
+        </div>
+    </div>
+    <script th:src="@{/js/script.js}"></script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editar APU</title>
+<div th:replace="Menu.html"></div>
+<div class="contenedor-principal" id="contenedor-move">
+	<a class="boton-volver" href="/APU">VOLVER</a>
+	<form th:action="@{'/APU/' + ${apu.id} + '/Actualizar'}" th:object="${apu}" method="POST">
+		<div class="contenedor-play-subproyecto">
+			<div class="proyecto-play">
+				<div class="nombre">
+					<a>EDICIÓN DEL APU</a>
+				</div>
+				<div class="ubicacion">
+					<a>NOMBRE</a>
+					<div class="texto">
+						<input class="cuadro-texto" type="text" id="nombre"
+							name="nombre" th:field="*{nombre}" placeholder="Digite el nuevo nombre del APU: " required>
+					</div>
+				</div>
+				<br>
+				<div class="ubicacion">
+					<a>UNIDAD</a>
+					<div class="texto">
+						<input class="cuadro-texto" type="text" id="unidad"
+							name="unidad" th:field="*{unidad}" placeholder="Digite la nueva unidad del APU: " required>
+					</div>
+				</div>
+			</div>
+			<button type="submit" class="boton-subproyecto">ACTUALIZAR APU</button>
+		</div>
+		</form>
+</div>
+</div>
+</div>
+<script th:src="@{/js/script.js}"></script>
+</body>
+
+</html>

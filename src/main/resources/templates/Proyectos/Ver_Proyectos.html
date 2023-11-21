@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Proyectos</title>
+	<div th:replace="Menu.html"></div>
+		<div class="contenedor">
+		<tr th:each="proyecto : ${proyectos}">
+			<div class="cuadro-proyectos">
+				<img src="../imagenes/proyectos.png">
+				<div class="proyecto">
+					<div class="nombre">
+						<a th:text="${proyecto.nombre}"></a>
+					</div>
+					<div class="logos-proyecto">
+						<a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos'}"><img class="icon-proyecto" src="../../imagenes/play.png"></a> 
+						<a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Ocultar'}"><img class="icon-proyecto" src="../../imagenes/delete.png"></a> 
+						<a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Editar'}"><img class="icon-proyecto" src="../../imagenes/editar.png"></a> 
+<!--						<a th:href="#"><img class="icon-proyecto" src="../imagenes/ver.png"></a>-->
+					</div>
+				</div>
+			</div>
+			<br></br>
+			</tr>
+		</div>
+		</div>
+		<script th:src="@{/js/script.js}"></script>
+</body>
+
+</html>

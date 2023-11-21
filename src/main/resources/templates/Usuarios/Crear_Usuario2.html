@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>Registrar Usuario</title>
+
+	<div th:replace="Footer.html"></div>
+
+	<br>
+	<br>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div th:if="${alertaCorreoExistente}" class="alert alert-danger" role="alert">
+        				<strong>Error:</strong> <span th:text="${alertaCorreoExistente}"></span>
+    				</div>
+
+				<h1>Regístro de Usuarios</h1>
+				<form th:action="@{/Usuarios/Registrar_Usuario/Guardar}" method="post" th:object="${usuario}">
+					<div class="form-group">
+						<label class="control-label" for="cedula">Correo : </label> <input id="correo" type="email"
+							class="form-control" th:field="*{correo}" required autofocus="autofocus">
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="nombre">Nombre : </label> <input id="nombre" type="text"
+							class="form-control" th:field="*{nombre}" required autofocus="autofocus">
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="apellido">Apellido : </label> <input id="apellido"
+							class="form-control" th:field="*{apellido}" required autofocus="autofocus">
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="contraseña">Contraseña : </label> <input type="password"
+							id="contraseña" class="form-control" th:field="*{contraseña}" required
+							autofocus="autofocus">
+					</div>
+
+					<div class="form-group">
+						<button type="submit" class="btn btn-success">Registrar</button>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+	</body>
+
+</html>

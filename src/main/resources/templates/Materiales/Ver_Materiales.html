@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista de Materiales</title>
+<div th:replace="Menu.html"></div>
+<div class="contenedor-principal" id="contenedor-move">
+	<a class="boton-volver" href="/Proyectos">VOLVER</a>
+	<div class="contenedor-play-subproyecto">
+		<div class="proyecto-play">
+			<div class="contenedor-proyecto">
+				<div class="nombre">
+					<a>LISTADO DE MATERIALES</a>
+				</div>
+			</div>
+		</div>
+	</div>
+		<tr th:each="material : ${materiales}">
+		<div class="contenedor-play-subproyecto">
+			<div class="proyecto-play">
+				<div class="contenedor-proyecto">
+					<div class="nombre">
+						<a th:text="${material.nombre}"></a>
+					</div>
+					<div class="logos-proyecto">
+						<a th:href="@{'/Materiales/' + ${material.id} + '/Editar'}"><img
+							class="icon-proyecto" src="../../imagenes/editar.png"></a> <a
+							th:href="@{'/Materiales/' + ${material.id} + '/Ocultar'}"><img
+							class="icon-proyecto" src="../../imagenes/delete.png"></a>
+					</div>
+				</div>
+				<div class="ubicacion">
+					<a>UNIDAD METRICA</a>
+					<div class="nombre-ubicacion">
+						<a th:text="${material.unidadMetrica}"></a>
+					</div>
+				</div>
+				<div class="ubicacion">
+					<a>OBSERVACIONES</a>
+					<div class="nombre-ubicacion">
+						<a th:text="${material.observacion}"></a>
+					</div>
+				</div>	
+			</div>
+		</div>
+		<br>
+	</tr>
+	</div>
+</div>
+<script th:src="@{/js/script.js}"></script>
+</body>
+
+</html>

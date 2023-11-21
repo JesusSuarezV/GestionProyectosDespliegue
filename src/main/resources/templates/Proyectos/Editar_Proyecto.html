@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar proyecto</title>
+    <div th:replace="Menu.html"></div>
+        <div class="contenedor">
+        
+            <form th:action="@{'/Proyectos/' + ${proyecto.id} + '/Actualizar'}" th:object="${proyecto}" method="POST">
+            <div class="formulario">
+                <div class="contenedor-formulario">
+                    <div class="nombre-proyecto">
+                        <label for="nombre-proyecto">NOMRRE DEL PROYECTO*</label>
+                    </div>
+                    <div class="texto">
+                        <input class="cuadro-texto" type="text" id="nombre" name="nombre" th:field="*{nombre}">
+                    </div>
+                </div>
+                <div class="contenedor-formulario">
+                    <div class="ubicacion-proyecto">
+                        <label for="ubicacion-proyecto">UBICACIÓN*</label>
+                    </div>
+                    <div class="texto">
+                        <input class="cuadro-texto" type="text" id="ubicacion" name="ubicacion " th:field="*{ubicacion}">
+                    </div>
+                </div>
+            </div>
+            <div class="botones">
+               <button type="submit" class="boton boton-verde">GUARDAR</button>
+               <button type="button" onclick="window.location.href='/Proyectos'" class="boton boton-rojo">CANCELAR</button>
+            </div>
+            
+             </form>
+        </div>
+    </div>
+     <script th:src="@{/js/script.js}"></script>
+</body>
+
+</html>

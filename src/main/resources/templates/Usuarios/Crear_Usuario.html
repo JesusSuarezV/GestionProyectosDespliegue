@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>Registrar Usuario</title>
+ 	<div th:replace="Menu.html"></div>
+        <div class="contenedor">
+        <div th:if="${alertaCorreoExistente}" class="alert alert-danger" role="alert">
+        				<strong>Error:</strong> <span th:text="${alertaCorreoExistente}"></span>
+    				</div>
+      <form th:action="@{/Usuarios/Registrar_Usuario/Guardar}" method="post" th:object="${usuario}">
+            <div class="formulario">
+                <div class="contenedor-formulario">
+                    <div class="nombre-proyecto">
+                        <label for="nombre-proyecto">CORREO ELECTRONICO</label>
+                    </div>
+                    <div class="texto">
+                        <input class="cuadro-texto" type="email" id="correo" name="correo" required>
+                    </div>
+                </div>
+                <div class="contenedor-formulario">
+                    <div class="ubicacion-proyecto">
+                        <label for="ubicacion-proyecto">NOMBRE</label>
+                    </div>
+                    <div class="texto">
+                        <input class="cuadro-texto" type="text" id="nombre" name="nombre" required>
+                    </div>
+                </div>
+                 <div class="contenedor-formulario">
+                    <div class="ubicacion-proyecto">
+                        <label for="ubicacion-proyecto">APELLIDO</label>
+                    </div>
+                    <div class="texto">
+                        <input class="cuadro-texto" type="text" id="apellido" name="apellido" required>
+                    </div>
+                </div>
+                <div class="contenedor-formulario">
+                    <div class="ubicacion-proyecto">
+                        <label for="ubicacion-proyecto">CONTRASEÑA</label>
+                    </div>
+                    <div class="texto">
+                        <input class="cuadro-texto" type="password" id="contraseña" name="contraseña" required>
+                    </div>
+                </div>
+            </div>
+            <div class="botones">
+            	<button type="submit" class="boton boton-verde">GUARDAR</button>
+                <button type="button" onclick="window.location.href='/Usuarios'" class="boton boton-rojo">CANCELAR</button>
+
+
+            </div>
+            </form>
+        </div>
+        </div>
+    <script th:src="@{/js/script.js}"></script>
+</body>
+
+</html>

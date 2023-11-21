@@ -1,0 +1,134 @@
+<!-- CSS only -->
+<link rel="stylesheet" th:href="@{/css/estilos.css}">
+<link rel="stylesheet" th:href="@{/css/proyectos.css}">
+    <script src="https://kit.fontawesome.com/43d3343120.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body id="body">
+    <nav class="navegacion">
+        <div class="icon-user">
+            <a href="#">
+                <img th:src="@{/imagenes/usuario.png}">
+            </a>
+            <div class="icon-responsive">
+                <i class="fa-solid fa-bars" style="color: #b15b15;" id="btn-open"></i>
+            </div>
+        </div>
+        <div class="icon-logout" sec:authorize="isAuthenticated()">
+            <a th:href="@{/logout}">
+                <img th:src="@{/imagenes/logout.png}">
+            </a>
+        </div>
+    </nav>
+    <div class="cuerpo">
+        <div class="menu-principal" id="menu-principal">
+            <ul class="lista-principal-menu" id="lista-close">
+                <li class="lista-principal lista-principal--click">
+                    <div class="lista-item">
+                        <a class="lista-link">PROYECTOS</a>
+                        <i class="fa-solid fa-angle-right list-arrow" style="color: #ffffff;"></i>
+                    </div>
+                    <ul class="lista-secundaria">
+                        <li class="lista-item-3 lista-subitem">
+                            <a class="lista-link" href="/Proyectos">VER PROYECTOS</a>
+                        </li>
+                        <li class="lista-item-3 lista-subitem">
+                            <a class="lista-link" href="/Proyectos/Nuevo_Proyecto">CREAR PROYECTOS</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="lista-principal lista-principal--click">
+                    <div class="lista-item">
+                        <a class="lista-link">ITEMS</a>
+                        <i class="fa-solid fa-angle-right list-arrow" style="color: #ffffff;"></i>
+                    </div>
+                    <ul class="lista-secundaria">
+                        <li class="lista-item-3 lista-subitem">
+                            <a class="lista-link" href="/Items">VER ITEMS</a>
+                        </li>
+                        <li class="lista-item-3 lista-subitem">
+                            <a class="lista-link" href="/Items/Nuevo_Item">CREAR ITEM</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="lista-principal  lista-principal--click">
+                    <div class="lista-item">
+                        <a class="lista-link">APU</a>
+                        <i class="fa-solid fa-angle-right list-arrow" style="color: #ffffff;"></i>
+                    </div>
+                    <ul class="lista-secundaria">
+                        <li class="lista-item-3 lista-subitem">
+                            <a class="lista-link" href="/APU">VER APUs</a>
+                        </li>
+                        <li class="lista-item-3 lista-subitem">
+                            <a class="lista-link" href="/APU/Nuevo_APU">CREAR APU</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="lista-principal lista-principal--click">
+                    <div class="lista-item">
+                        <a class="lista-link">RECURSOS</a>
+                        <i class="fa-solid fa-angle-right list-arrow" style="color: #ffffff;"></i>
+                    </div>
+                    <ul class="lista-secundaria">
+                        <li class="lista-item-secundario">
+                            <div class="lista-item-2">
+                                <a class="lista-link">MATERIALES</a>
+                                <i class="fa-solid fa-angle-right list-arrow" style="color: #ffffff;"></i>
+                            </div>
+                            <ul class="lista-tercearia">
+                                <li class="lista-item-terceario">
+                                    <a class="lista-link" href="/Materiales">VER MATERIALES</a>
+                                </li>
+                                <li class="lista-item-terceario">
+                                    <a class="lista-link" href="/Materiales/Nuevo_Material">CREAR MATERIAL</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="lista-item-secundario">
+                            <div class="lista-item-2">
+                                <a class="lista-link">MAQUINARIA</a>
+                                <i class="fa-solid fa-angle-right list-arrow" style="color: #ffffff;"></i>
+                            </div>
+                            <ul class="lista-tercearia">
+                                <li class="lista-item-terceario">
+                                    <a class="lista-link" href="/Maquinarias">VER MAQUINARIA</a>
+                                </li>
+                                <li class="lista-item-terceario">
+                                    <a class="lista-link" href="/Maquinarias/Nueva_Maquinaria">CREAR MAQUINARIA</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="lista-item-secundario">
+                            <div class="lista-item-2">
+                                <a class="lista-link">MANO DE OBRA</a>
+                                <i class="fa-solid fa-angle-right list-arrow" style="color: #ffffff;"></i>
+                            </div>
+                            <ul class="lista-tercearia">
+                                <li class="lista-item-terceario">
+                                    <a class="lista-link" href="/ManoObras">VER MANO DE OBRA</a>
+                                </li>
+                                <li class="lista-item-terceario">
+                                    <a class="lista-link" href="/ManoObras/Nueva_ManoObra">CREAR MANO DE OBRA</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="lista-principal  lista-principal--click">
+                    <div class="lista-item">
+                        <a class="lista-link">USUARIOS</a>
+                        <i class="fa-solid fa-angle-right list-arrow" style="color: #ffffff;"></i>
+                    </div>
+                    <ul class="lista-secundaria">
+                        <li class="lista-item-3 lista-subitem">
+                            <a class="lista-link" href="/Usuarios">VER USUARIOS</a>
+                        </li>
+                        <li class="lista-item-3 lista-subitem">
+                            <a class="lista-link" href="/Usuarios/Registrar_Usuario">REGISTRAR USUARIO</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>

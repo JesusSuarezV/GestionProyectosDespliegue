@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Inicio de Sesión</title>
+<div th:replace="Footer.html"></div>
+
+	<br>
+	<br>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<h1>Inicio de sesión</h1>
+				<form th:action="@{/Recuperar_Contrasena/Validar}" method="post">
+
+					<div th:if=${param.Error}>
+						<div class="alert alert-danger">Este correo no se encuentra registrado</div>
+					</div>
+					<div th:if=${param.Exito}>
+						<div class="alert alert-info">Se ha enviado la contraseña al correo electronico</div>
+					</div>
+
+
+					<div class="form-group">
+						<label  for="username">Correo electronico : </label> <input id="correo"  name="correo" type="email" class="form-control"
+							required autofocus="autofocus" placeholder="Digite su email">
+					</div>
+
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-6 col-md-offset-3">
+								<input type="submit" class="form-control btn btn-primary" name="login-submit" id="login-submit"
+									value="Recuperar Contraseña" />
+							</div>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+</body>
+</html>
