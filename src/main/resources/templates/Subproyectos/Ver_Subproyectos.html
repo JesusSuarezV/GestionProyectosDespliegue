@@ -31,7 +31,7 @@
                         <div class="logos-proyecto">
                             
                             <a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Editar'}"><img class="icon-proyecto" src="../../imagenes/editar.png"></a>
-                            <a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Ocultar'}"><img class="icon-proyecto" src="../../imagenes/delete.png"></a>
+                            <a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Ocultar'}" onclick="return confirmarOcultar();"><img class="icon-proyecto" src="../../imagenes/delete.png"></a>
                         </div>
                     </div>
                     <div class="ubicacion">

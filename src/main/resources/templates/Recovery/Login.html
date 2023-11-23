@@ -12,10 +12,12 @@
 </head>
 
 <body>
-    <form id="cuadro" th:action="@{/Iniciar_Sesion}" method="post">
-    <div th:if=${param.error}>
-						<div class="alert alert-danger">Usuario o contraseña
-							inválidos</div>
+    <form id="cuadro" th:action="@{/Recuperar_Contrasena/Validar}" method="post">
+    <div th:if=${param.Error}>
+						<div class="alert alert-danger">Este correo no se encuentra registrado</div>
+					</div>
+					<div th:if=${param.Exito}>
+						<div class="alert alert-info">Se ha enviado la contraseña al correo electronico</div>
 					</div>
         <a class="linkcasa" href="/	">
             <img class="casita" src="../imagenes/inicio.png">
@@ -27,13 +29,7 @@
             <input required autofocus="autofocus" placeholder="CORREO ELECTRONICO" type="email" id="username" name="username">
         </label>
         <br>
-        <label for="password">
-            <i class="fa-solid fa-lock"></i>
-           <input id="password" type="password"  name="password" required autofocus="autofocus" placeholder="CONTRASEÑA">
-        </label>
-        <a th:href="@{/Recuperar_Contrasena}" class="link">¿OLVIDASTE LA CONTRASEÑA?</a>
-        <br>
-        <button id="login" class="boton-login">INICIAR</button>
+        <button id="login" class="boton-login">RECUPERAR CONTRASEÑA</button>
         <br>
     </form>
     <script src="../js/script.js"></script>

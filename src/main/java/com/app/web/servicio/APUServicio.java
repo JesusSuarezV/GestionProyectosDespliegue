@@ -53,6 +53,11 @@ public class APUServicio {
     	
     }
     
+    public boolean nombreExistenteYVisible(String nombre) {
+
+		return repositorio.existsByNombreAndVisibilidadTrue(nombre);
+	}
+    
     
     
 }

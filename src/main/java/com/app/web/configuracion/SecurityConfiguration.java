@@ -41,15 +41,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers(
 				"/js/**",
 				"/css/**",
-				"/imagenes/**").permitAll()
+				"/imagenes/**",
+				"/").permitAll()
 		.antMatchers("/Iniciar_Sesion").anonymous()
 		.antMatchers("/Recuperar_Contrasena/**").anonymous()
 		.antMatchers("/Recuperar_Contrasena?Exito").anonymous()
 		.antMatchers("/Recuperar_Contrasena?Error").anonymous()
+		.antMatchers("/Usuarios/**").hasAuthority("ADMIN")
 		.anyRequest().authenticated()
 		.and()
 	.formLogin()
 		.loginPage("/Iniciar_Sesion")
+		.defaultSuccessUrl("/Proyectos")
 		.and()
 	.logout()
 		.invalidateHttpSession(true)

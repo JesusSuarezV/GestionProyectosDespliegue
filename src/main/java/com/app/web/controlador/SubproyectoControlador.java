@@ -60,7 +60,7 @@ public class SubproyectoControlador {
 	public String mostrarFormularioDeEditar(@PathVariable int proyectoId, @PathVariable int id, Model modelo) {
 		modelo.addAttribute("proyecto", proyectoServicio.obtenerProyectoPorId(proyectoId)); //se envia el proyecto en el que se esta trabajando
 		modelo.addAttribute("subproyecto", servicio.obtenerSubproyectoPorId(id)); //se envia el subproyecto que se va a editar
-		return "/Subproyectos/Editar_Subproyecto"; //URL en donde retorna el metodo
+		return "Subproyectos/Editar_Subproyecto"; //URL en donde retorna el metodo
 	}
 	
 	@PostMapping("/Proyectos/{proyectoId}/Subproyectos/{id}/Actualizar")

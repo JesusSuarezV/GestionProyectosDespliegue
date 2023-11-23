@@ -22,4 +22,6 @@ public interface APURepositorio extends JpaRepository<APU, Integer> {
 	@Query("SELECT COALESCE(MAX(a.id), 0) FROM APU a") //consulta para obtener el valor de id maximo
     int obtenerMaximoId();
 
+	boolean existsByNombreAndVisibilidadTrue(String nombre);
+
 }

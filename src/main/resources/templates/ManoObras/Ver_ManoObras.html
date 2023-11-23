@@ -27,7 +27,7 @@
                         <div class="logos-proyecto">
                         
                             <a th:href="@{'/ManoObras/' + ${manoObra.id} + '/Editar'}" ><img class="icon-proyecto" src="../imagenes/editar.png"></a>
-						    <a th:href="@{'/ManoObras/' + ${manoObra.id} + '/Ocultar'}"><img class="icon-proyecto"  src="../imagenes/delete.png"></a>
+						    <a th:href="@{'/ManoObras/' + ${manoObra.id} + '/Ocultar'}"><img class="icon-proyecto"  src="../imagenes/delete.png" onclick="return confirmarOcultar();"></a>
                         </div>
                     </div>
                 </div>

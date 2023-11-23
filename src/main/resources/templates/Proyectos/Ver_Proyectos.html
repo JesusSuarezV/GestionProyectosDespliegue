@@ -16,7 +16,7 @@
 					</div>
 					<div class="logos-proyecto">
 						<a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos'}"><img class="icon-proyecto" src="../../imagenes/play.png"></a> 
-						<a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Ocultar'}"><img class="icon-proyecto" src="../../imagenes/delete.png"></a> 
+						<a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Ocultar'}" onclick="return confirmarOcultar();"><img class="icon-proyecto" src="../../imagenes/delete.png"></a> 
 						<a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Editar'}"><img class="icon-proyecto" src="../../imagenes/editar.png"></a> 
 <!--						<a th:href="#"><img class="icon-proyecto" src="../imagenes/ver.png"></a>-->
 					</div>

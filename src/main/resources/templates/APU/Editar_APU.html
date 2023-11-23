@@ -7,6 +7,9 @@
 <title>Editar APU</title>
 <div th:replace="Menu.html"></div>
 <div class="contenedor-principal" id="contenedor-move">
+<div th:if="${alertaAPUExistente}" class="alert alert-danger" role="alert">
+        				<strong>Error:</strong> <span th:text="${alertaAPUExistente}"></span>
+        				</div>
 	<a class="boton-volver" href="/APU">VOLVER</a>
 	<form th:action="@{'/APU/' + ${apu.id} + '/Actualizar'}" th:object="${apu}" method="POST">
 		<div class="contenedor-play-subproyecto">

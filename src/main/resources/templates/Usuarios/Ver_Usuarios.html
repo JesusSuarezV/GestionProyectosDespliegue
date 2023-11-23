@@ -25,7 +25,7 @@
 						<a th:text="${usuario.correo}"></a>
 					</div>
 					<div class="logos-proyecto">
-						<a th:href="@{'/Usuarios/' + ${usuario.correo} + '/Ocultar'}"><img
+						<a th:href="@{'/Usuarios/' + ${usuario.correo} + '/Ocultar'}" onclick="return confirmarOcultar();"><img
 							class="icon-proyecto" src="../../imagenes/delete.png"></a>
 					</div>
 				</div>

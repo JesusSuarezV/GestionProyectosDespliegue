@@ -16,7 +16,7 @@ public class LoginControlador {
 	
 	@GetMapping("/")
 	public String verPaginaDeInicio(Model modelo) {
-		return "redirect:/Proyectos";
+		return "Index";
 	}
 	
 }
