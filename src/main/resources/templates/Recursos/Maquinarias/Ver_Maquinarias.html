@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang=xmlns:th="http://www.thymeleaf.org" "en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista de Maquinarias asignadas</title>
+<div th:replace="Menu.html"></div>
+<div class="contenedor-principal" id="contenedor-move">
+	<a class="boton-volver" href="/Maquinarias">VOLVER</a>
+	<div class="contenedor-play">
+		<div class="nombre">
+			<div class="contenedor-proyecto">
+				<div class="nombre">
+					<a th:text="'MAQUINARIAS - ' + ${apuItemSubproyecto.apu.nombre}"></a>
+				</div>
+			</div>
+			<div class="ubicacion">
+                        <a>PRECIO MAQUINARIAS</a>
+                        <div class="nombre-ubicacion">
+                            <a th:text="${total}"></a>
+                        </div>
+                    </div>
+		</div>
+	</div>
+		<tr th:each="maquinaria : ${maquinarias}">
+		<div class="contenedor-play-subproyecto">
+			<div class="proyecto-play">
+				<div class="contenedor-proyecto">
+					<div class="nombre">
+						<a th:text="${maquinaria.maquinaria.nombre}"></a>
+					</div>
+					<div class="logos-proyecto">
+						<a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/'+ ${apuItemSubproyecto.id} + '/Recursos/Maquinarias/' + ${maquinaria.id} + '/Editar'}"><img class="icon-proyecto" th:src="@{/imagenes/editar.png}"></a>
+						<a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/'+ ${apuItemSubproyecto.id} + '/Recursos/Maquinarias/' + ${maquinaria.id} + '/Ocultar'}" onclick="return confirmarOcultar();"><img class="icon-proyecto" th:src="@{/imagenes/delete.png}"></a>
+					</div>
+				</div>
+				<div class="ubicacion">
+					<a>UNIDAD</a>
+					<div class="nombre-ubicacion">
+						<a th:text="${maquinaria.maquinaria.unidad}"></a>
+					</div>
+				</div>
+				<div class="ubicacion">
+					<a>TARIFA</a>
+					<div class="nombre-ubicacion">
+						<a th:text="${maquinaria.tarifa}"></a>
+					</div>
+				</div>
+				<div class="ubicacion">
+					<a>RDTO</a>
+					<div class="nombre-ubicacion">
+						<a th:text="${maquinaria.rdto}"></a>
+					</div>
+				</div>
+				<div class="ubicacion">
+					<a>V/PARCIAL</a>
+					<div class="nombre-ubicacion">
+						<a th:text="${maquinaria.getValorParcial()}"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+	</tr>
+	<a class="boton-subproyecto" th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/'+ ${apuItemSubproyecto.id} + '/Recursos/Maquinarias/Asignar_Maquinaria'}">ASIGNAR MAQUINARIA</a>
+	</div>
+</div>
+<script th:src="@{/js/script.js}"></script>
+</body>
+
+</html>

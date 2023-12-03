@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.web.entidad.ManoObra;
+import com.app.web.entidad.Material;
 import com.app.web.repositorio.ManoObraRepositorio;
 
 import java.util.List;
@@ -53,7 +54,9 @@ public class ManoObraServicio {
     	
     }
     
-    
+    public List<ManoObra> obtenerManoObraNoAsignados(int APUitemSubproyectoId) {
+    	return repositorio.findManoObrasNotInAPUItemSubproyecto(APUitemSubproyectoId);
+    }
     
 }
 

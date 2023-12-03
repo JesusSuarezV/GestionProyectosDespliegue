@@ -53,6 +53,10 @@ public class ItemServicio {
     	
     }
     
+    public List<Item> obtenerItemsNoAsignados(int subproyectoId) {
+    	return repositorio.findItemsNotInSubproyecto(subproyectoId);
+    }
+    
     
     
 }

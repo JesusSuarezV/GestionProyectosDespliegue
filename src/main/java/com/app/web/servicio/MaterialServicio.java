@@ -3,6 +3,7 @@ package com.app.web.servicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.web.entidad.APU;
 import com.app.web.entidad.Material;
 import com.app.web.repositorio.MaterialRepositorio;
 
@@ -51,6 +52,10 @@ public class MaterialServicio {
     	
     	return repositorio.obtenerMaximoId();
     	
+    }
+    
+    public List<Material> obtenerMaterialNoAsignados(int APUitemSubproyectoId) {
+    	return repositorio.findMaterialesNotInAPUItemSubproyecto(APUitemSubproyectoId);
     }
     
     

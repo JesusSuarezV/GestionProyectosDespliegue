@@ -1,5 +1,7 @@
 package com.app.web.entidad;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -7,6 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.app.web.servicio.ItemSubproyectoServicio;
+import com.app.web.servicio.SubproyectoServicio;
 
 @Entity // Etiqueta de Entidad
 @Table(name = "subproyecto") // Etiqueta que relaciona la tabla de la base de datos con su nombre"
@@ -21,7 +28,8 @@ public class Subproyecto {
 	Proyecto proyecto;
 	@Column(name = "visibilidad")
 	boolean visibilidad;
-
+	
+	
 	// Getter And Setters
 	public int getId() {
 		return id;

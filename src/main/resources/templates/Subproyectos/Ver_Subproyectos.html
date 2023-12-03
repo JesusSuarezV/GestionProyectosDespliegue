@@ -29,7 +29,8 @@
                             <a th:text="${subproyecto.nombre}"></a>
                         </div>
                         <div class="logos-proyecto">
-                            
+                        
+                            <a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items'}"><img class="icon-proyecto" src="../../imagenes/play.png"></a>
                             <a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Editar'}"><img class="icon-proyecto" src="../../imagenes/editar.png"></a>
                             <a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Ocultar'}" onclick="return confirmarOcultar();"><img class="icon-proyecto" src="../../imagenes/delete.png"></a>
                         </div>
@@ -37,7 +38,7 @@
                     <div class="ubicacion">
                         <a  th:text="'COSTO ' + ${subproyecto.getNombre()}" ></a>
                         <div class="nombre-ubicacion">
-                            <a>0000000.00</a>
+                            <a th:text="${servicio.obtenerTotal(subproyecto)}"></a>
                         </div>
                     </div>
                 </div>

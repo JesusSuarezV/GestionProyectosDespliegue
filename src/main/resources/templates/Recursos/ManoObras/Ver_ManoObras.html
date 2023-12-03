@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang=xmlns:th="http://www.thymeleaf.org" "en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista de Mano de Obra asignadas</title>
+<div th:replace="Menu.html"></div>
+<div class="contenedor-principal" id="contenedor-move">
+	<a class="boton-volver" href="/ManoObras">VOLVER</a>
+	<div class="contenedor-play">
+		<div class="nombre">
+			<div class="contenedor-proyecto">
+				<div class="nombre">
+					<a th:text="'MANO DE OBRA - ' + ${apuItemSubproyecto.apu.nombre}"></a>
+				</div>
+			</div>
+			<div class="ubicacion">
+                        <a>PRECIO MANO DE OBRA</a>
+                        <div class="nombre-ubicacion">
+                            <a th:text="${total}"></a>
+                        </div>
+                    </div>
+		</div>
+	</div>
+		<tr th:each="manoObra : ${manoObras}">
+		<div class="contenedor-play-subproyecto">
+			<div class="proyecto-play">
+				<div class="contenedor-proyecto">
+					<div class="nombre">
+						<a th:text="${manoObra.manoObra.nombre}"></a>
+					</div>
+					<div class="logos-proyecto">
+						<a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/'+ ${apuItemSubproyecto.id} + '/Recursos/ManoObras/' + ${manoObra.id} + '/Editar'}"><img class="icon-proyecto" th:src="@{/imagenes/editar.png}"></a>
+						<a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/'+ ${apuItemSubproyecto.id} + '/Recursos/ManoObras/' + ${manoObra.id} + '/Ocultar'}" onclick="return confirmarOcultar();"><img class="icon-proyecto" th:src="@{/imagenes/delete.png}"></a>
+					</div>
+				</div>
+				<div class="ubicacion">
+					<a>CANTIDAD</a>
+					<div class="nombre-ubicacion">
+						<a th:text="${manoObra.cantidad}"></a>
+					</div>
+				</div>
+				<div class="ubicacion">
+					<a>JORNAL</a>
+					<div class="nombre-ubicacion">
+						<a th:text="${manoObra.jornal}"></a>
+					</div>
+				</div>
+				<div class="ubicacion">
+					<a>PRESTACION</a>
+					<div class="nombre-ubicacion">
+						<a th:text="${manoObra.prestacion}"></a>
+					</div>
+				</div>
+				<div class="ubicacion">
+					<a>J/OTAL</a>
+					<div class="nombre-ubicacion">
+						<a th:text="${manoObra.getJornalTotal()}"></a>
+					</div>
+				</div>
+				<div class="ubicacion">
+					<a>RDTO</a>
+					<div class="nombre-ubicacion">
+						<a th:text="${manoObra.rdto}"></a>
+					</div>
+				</div>
+				<div class="ubicacion">
+					<a>V/PARCIAL</a>
+					<div class="nombre-ubicacion">
+						<a th:text="${manoObra.getValorParcial()}"></a>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<br>
+	</tr>
+	<a class="boton-subproyecto" th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/'+ ${apuItemSubproyecto.id} + '/Recursos/ManoObras/Asignar_ManoObra'}">ASIGNAR MANO DE OBRA</a>
+	</div>
+</div>
+<script th:src="@{/js/script.js}"></script>
+</body>
+
+</html>

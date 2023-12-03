@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.web.entidad.Maquinaria;
+import com.app.web.entidad.Material;
 import com.app.web.repositorio.MaquinariaRepositorio;
 
 import java.util.List;
@@ -53,6 +54,9 @@ public class MaquinariaServicio {
     	
     }
     
+    public List<Maquinaria> obtenerMaquinariaNoAsignadas(int APUitemSubproyectoId) {
+    	return repositorio.findMaquinariasNotInAPUItemSubproyecto(APUitemSubproyectoId);
+    }
     
     
 }

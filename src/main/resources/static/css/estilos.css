@@ -163,24 +163,3 @@ body {
     visibility: hidden;
 }
 
-.alert {
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-top-left-radius: 54px;
-  border-top-right-radius: 54px;
-  font-size: 16px;
-}
-
-.alert-danger {
-	
-  color: #721c24;
-  background-color: #f8d7da;
-  border-color: #f5c6cb;
-}
-
-.alert-info {
-  color: #0c5460;
-  background-color: #d1ecf1;
-  border-color: #bee5eb;
-}

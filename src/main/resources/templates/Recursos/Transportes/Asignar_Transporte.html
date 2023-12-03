@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asignar Transporte</title>
+<div th:replace="Menu.html"></div>
+<div class="contenedor-principal" id="contenedor-move">
+	<a class="boton-volver" href="/Materiales">VOLVER</a>
+	<form th:action="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/'+ ${apuItemSubproyecto.id} + '/Recursos/Transportes/Guardar'}" th:object="${transporte}" method="POST">
+		<div class="contenedor-play-subproyecto">
+			<div class="proyecto-play">
+			
+				<div class="ubicacion">
+					<a>MATERIAL</a>
+					<label for="materialAPUItemSubrpoyectoId" class="texto">
+						<select class="cuadro-texto" id="materialAPUItemSubproyectoId" name="materialAPUItemSubproyectoId" required>
+                        <option th:each="material : ${materiales}" th:value="${material.id}" th:text="${material.material.nombre}"></option>
+                    </select>
+					</label>
+					
+					
+					</div>
+					<br>
+				</div>
+				
+			<br>
+			<div class="ubicacion">
+    					<a>DISTANCIA</a>
+    						<div class="texto">
+        						<input class="cuadro-texto" type="text" id="distancia" name="distancia" required pattern="^\d+(\.\d+)?$">
+    						</div>
+			</div>
+			<br>
+			<div class="ubicacion">
+    					<a>PRECIO</a>
+    						<div class="texto">
+        						<input class="cuadro-texto" type="text" id="precio" name="precio" required pattern="^\d+(\.\d+)?$">
+    						</div>
+			</div>
+			<button type="submit" class="boton-subproyecto">ASIGNAR TRANSPORTE</button>
+		</div>
+		</form>
+</div>
+</div>
+</div>
+<script th:src="@{/js/script.js}"></script>
+</body>
+
+</html>

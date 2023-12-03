@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: orange;
+}
+
+#contenedor-principal {
+    display: flex;
+}
+
+aside {
+    width: 20%;
+    background-color: grey;
+    padding: 20px;
+    color: white;
+}
+
+main {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: white;
+}
+
+button {
+    float: right;
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 45%;
+}
+
+/* Agregar estilo para los elementos desplegables */
+.desplegable {
+    cursor: pointer;
+    background-color: orangered;
+    list-style: none;
+    border-radius: 15%;
+    width: 50%;
+    padding: 10px 15px;
+    display: block;
+}
+
+.desplegable li ul{
+    display: none;
+    position: absolute;
+    min-width: 140px;
+    text-decoration: none;
+}
+
+
+.desplegable li:hover > ul{
+    display: block;
+}
+
+/* Estilo para el menú secundario */
+ul ul {
+    display: none;
+    list-style: none;
+    background-color: orange;
+    border-radius: 15%;
+    text-decoration: none;
+}
+
+/* Mostrar el menú secundario cuando la clase "activo" está presente */
+.activo ul {
+    display: block;
+}
+/* Estilos para el formulario dentro del main */
+main form {
+    background-color: #ddd;
+    color: black;
+    margin: 0 200px;
+    padding: 20px 0;
+    text-decoration: white;
+    display: flex;
+}
+
+main h1{
+    text-align: center;
+    background-color: #ddd;
+    margin: 0 200px;
+    padding: 20px 0;
+}
+
+
+/* Estilos para el campo de nombre dentro del formulario */
+main form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+main form input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    flex:1;
+    border-radius: 10px;
+}
+
+main form button {
+    background-color: orange;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 10px; /* Ajusta según tu preferencia para hacerlo más circular */
+    cursor: pointer;
+}

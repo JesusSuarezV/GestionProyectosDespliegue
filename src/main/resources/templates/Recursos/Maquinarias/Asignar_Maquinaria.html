@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asignar Maquinaria</title>
+<div th:replace="Menu.html"></div>
+<div class="contenedor-principal" id="contenedor-move">
+	<a class="boton-volver" href="/Maquinarias">VOLVER</a>
+	<form th:action="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/'+ ${apuItemSubproyecto.id} + '/Recursos/Maquinarias/Guardar'}" th:object="${maquinariaAPUItemSubproyecto}" method="POST">
+		<div class="contenedor-play-subproyecto">
+			<div class="proyecto-play">
+			
+				<div class="ubicacion">
+					<a>MAQUINARIA</a>
+					<label for="maquinariaId" class="texto">
+						<select class="cuadro-texto" id="maquinariaId" name="maquinariaId" required>
+                        <option th:each="maquinaria : ${maquinarias}" th:value="${maquinaria.id}" th:text="${maquinaria.nombre}"></option>
+                    </select>
+					</label>
+					
+					
+					</div>
+					<br>
+				</div>
+				<br>
+				<div class="ubicacion">
+    					<a>TARIFA</a>
+    						<div class="texto">
+        						<input class="cuadro-texto" type="text" id="tarifa" name="tarifa" required pattern="^\d+(\.\d+)?$">
+    						</div>
+			</div>
+			<br>
+			<div class="ubicacion">
+    					<a>RDTO</a>
+    						<div class="texto">
+        						<input class="cuadro-texto" type="text" id="rdto" name="rdto" required pattern="^\d+(\.\d+)?$">
+    						</div>
+			</div>
+			<button type="submit" class="boton-subproyecto">ASIGNAR MAQUINARIA</button>
+		</div>
+		</form>
+</div>
+</div>
+</div>
+<script th:src="@{/js/script.js}"></script>
+</body>
+
+</html>

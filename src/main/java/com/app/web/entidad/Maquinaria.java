@@ -10,14 +10,16 @@ import javax.persistence.Table;
 public class Maquinaria {
 	@Id//Etiquet de llave primaria
 	@Column(name = "Id")//Etiqueta de la columna con su nombre
-	int id;
+	private int id;
 	@Column(name = "Nombre")
-	String nombre;
+	private String nombre;
 	@Column(name = "Unidad")
-	String unidad;
+	private String unidad;
 	@Column(name = "Visibilidad")
-	boolean visibilidad;
+	private boolean visibilidad;
 	//Getter And Setters
+	
+	
 	public int getId() {
 		return id;
 	}

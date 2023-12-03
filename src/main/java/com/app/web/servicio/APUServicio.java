@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.web.entidad.APU;
+import com.app.web.entidad.Item;
 import com.app.web.repositorio.APURepositorio;
 
 import java.util.List;
@@ -58,6 +59,9 @@ public class APUServicio {
 		return repositorio.existsByNombreAndVisibilidadTrue(nombre);
 	}
     
+    public List<APU> obtenerAPUNoAsignados(int itemSubproyectoId) {
+    	return repositorio.findAPUNotInItemSubproyecto(itemSubproyectoId);
+    }
     
     
 }

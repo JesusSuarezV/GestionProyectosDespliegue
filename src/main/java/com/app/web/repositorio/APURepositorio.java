@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.app.web.entidad.APU;
+import com.app.web.entidad.Item;
 
 @Repository //Etiqueta que indica el repositorio
 public interface APURepositorio extends JpaRepository<APU, Integer> {
@@ -23,5 +25,8 @@ public interface APURepositorio extends JpaRepository<APU, Integer> {
     int obtenerMaximoId();
 
 	boolean existsByNombreAndVisibilidadTrue(String nombre);
+	
+	@Query("SELECT a FROM APU a WHERE a NOT IN (SELECT i.apu FROM APUItemSubproyecto i WHERE i.itemSubproyecto.id = :itemSubproyectoId AND i.visibilidad = true) AND a.visibilidad = true")
+    List<APU> findAPUNotInItemSubproyecto(@Param("itemSubproyectoId") int itemSubproyectoId);
 
 }

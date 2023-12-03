@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Items Asignados</title>
+    <div th:replace="Menu.html"></div>
+    <div class="contenedor-principal" id="contenedor-move">
+            <a class="boton-volver" href="/Proyectos">VOLVER</a>
+            <div class="contenedor-play-subproyecto">
+                <div class="proyecto-play">
+                    <div class="contenedor-proyecto">
+                        <div class="nombre">
+                            <a th:text="'RECURSOS - ' + ${apuItemSubproyecto.apu.nombre}"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contenedor-play-subproyecto">
+			<div class="proyecto-play">
+				<div class="contenedor-proyecto">
+					<div class="nombre">
+						<a>MATERIAL</a>
+					</div>
+					<div class="logos-proyecto">
+					<a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/'+ ${apuItemSubproyecto.id} + '/Recursos/Materiales'}"><img class="icon-proyecto" th:src="@{/imagenes/play.png}"></a> 
+					</div>
+				</div>
+					<div class="ubicacion">
+						<a>PRECIO</a>
+						<div class="nombre-ubicacion">
+						<a th:text="${totalMaterial}"></a>
+						</div>
+						</div>
+					</div>
+				</div>
+			<div class="contenedor-play-subproyecto">
+			<div class="proyecto-play">
+				<div class="contenedor-proyecto">
+					<div class="nombre">
+						<a>TRANSPORTE</a>
+					</div>
+					<div class="logos-proyecto">
+					<a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/'+ ${apuItemSubproyecto.id} + '/Recursos/Transportes'}"><img class="icon-proyecto" th:src="@{/imagenes/play.png}"></a> 
+					</div>
+				</div>
+					<div class="ubicacion">
+						<a>PRECIO</a>
+						<div class="nombre-ubicacion">
+						<a th:text="${totalTransporte}"></a>
+						</div>
+						</div>
+					</div>
+				</div>
+			<div class="contenedor-play-subproyecto">
+			<div class="proyecto-play">
+				<div class="contenedor-proyecto">
+					<div class="nombre">
+						<a>MAQUINARIA</a>
+					</div>
+					<div class="logos-proyecto">
+					<a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/'+ ${apuItemSubproyecto.id} + '/Recursos/Maquinarias'}"><img class="icon-proyecto" th:src="@{/imagenes/play.png}"></a> 
+					</div>
+				</div>
+					<div class="ubicacion">
+						<a>PRECIO</a>
+						<div class="nombre-ubicacion">
+						<a th:text="${totalMaquinaria}"></a>
+						</div>
+						</div>
+					</div>
+				</div>
+			<div class="contenedor-play-subproyecto">
+			<div class="proyecto-play">
+				<div class="contenedor-proyecto">
+					<div class="nombre">
+						<a>MANO DE OBRA</a>
+					</div>
+					<div class="logos-proyecto">
+					<a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/'+ ${apuItemSubproyecto.id} + '/Recursos/ManoObras'}"><img class="icon-proyecto" th:src="@{/imagenes/play.png}"></a> 
+					</div>
+				</div>
+					<div class="ubicacion">
+						<a>PRECIO</a>
+						<div class="nombre-ubicacion">
+						<a th:text="${totalManoObra}"></a>
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    <script th:src="@{/js/script.js}"></script>
+</body>
+
+</html>

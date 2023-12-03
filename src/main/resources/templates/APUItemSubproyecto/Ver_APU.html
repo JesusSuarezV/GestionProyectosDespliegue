@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang=xmlns:th="http://www.thymeleaf.org" "en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista de APU</title>
+<div th:replace="Menu.html"></div>
+<div class="contenedor-principal" id="contenedor-move">
+	<a class="boton-volver" href="/Proyectos">VOLVER</a>
+	<div class="contenedor-play-subproyecto">
+		<div class="proyecto-play">
+			<div class="contenedor-proyecto">
+				<div class="nombre">
+					<a th:text="${itemSubproyecto.getItem().getNombre()}"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+		<tr th:each="apu : ${apu}">
+		<div class="contenedor-play-subproyecto">
+			<div class="proyecto-play">
+				<div class="contenedor-proyecto">
+					<div class="nombre">
+						<a th:text="${apu.apu.nombre}"></a>
+					</div>
+					<div class="logos-proyecto">
+						<a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/'+ ${apu.id} + '/Recursos'}"><img class="icon-proyecto" th:src="@{/imagenes/play.png}"></a> 
+						<a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/'+ ${apu.id} + '/Editar'}"><img class="icon-proyecto" th:src="@{/imagenes/editar.png}"></a>
+						<a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/'+ ${apu.id} + '/Ocultar'}" onclick="return confirmarOcultar();"><img class="icon-proyecto" th:src="@{/imagenes/delete.png}"></a>
+					</div>
+				</div>
+				<div class="ubicacion">
+					<a>CANTIDAD</a>
+					<div class="nombre-ubicacion">
+						<a th:text="${apu.cantidad}"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+	</tr>
+	<a class="boton-subproyecto" th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/Asignar_APU'}">ASIGNAR APU</a>
+	</div>
+</div>
+<script th:src="@{/js/script.js}"></script>
+</body>
+
+</html>

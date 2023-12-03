@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.app.web.entidad.Maquinaria;
+import com.app.web.entidad.Material;
 
 @Repository //Etiqueta que indica el repositorio
 public interface MaquinariaRepositorio extends JpaRepository<Maquinaria, Integer> {
@@ -22,4 +24,7 @@ public interface MaquinariaRepositorio extends JpaRepository<Maquinaria, Integer
 	@Query("SELECT COALESCE(MAX(m.id), 0) FROM Maquinaria m") //consulta para obtener el valor de id maximo
     int obtenerMaximoId();
 
+	@Query("SELECT m FROM Maquinaria m WHERE m NOT IN (SELECT a.maquinaria FROM MaquinariaAPUItemSubproyecto a WHERE a.apuItemSubproyecto.id = :apuItemSubproyectoId AND a.visibilidad = true) AND m.visibilidad = true")
+    List<Maquinaria> findMaquinariasNotInAPUItemSubproyecto(@Param("apuItemSubproyectoId") int apuItemSubproyectoId);
+	
 }

@@ -7,7 +7,7 @@
     margin-top: 40px;
     margin-left: 100px;
     margin-bottom: 40px;
-    margin-right: 100px;
+    margin-right: 80px;
     padding: 20px;
     width: 1000px;
     background-color: #CCCCCC;
@@ -127,7 +127,7 @@
 }
 
 /*crear proyecto*/
-.boton{
+.boton {
     width: fit-content;
     margin-bottom: 20px;
     margin-top: 0;
@@ -139,19 +139,19 @@
     cursor: pointer;
 }
 
-.botones{
+.botones {
     margin-top: 30px;
 }
 
-.boton-verde{
+.boton-verde {
     background-color: #59B200;
 }
 
-.boton-rojo{
+.boton-rojo {
     background-color: #ED5C2E;
 }
 
-.cuadro-texto{
+.cuadro-texto {
     border: none;
     font-size: 18px;
     border-radius: 30px;
@@ -159,12 +159,12 @@
     width: 400px;
 }
 
-.formulario{
+.formulario {
     display: flex;
     flex-direction: column;
 }
 
-.contenedor-formulario{
+.contenedor-formulario {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -179,7 +179,7 @@
 }
 
 /*ver subproyectos*/
-.contenedor-play-subproyecto{
+.contenedor-play-subproyecto {
     padding: 20px;
     width: 900px;
     margin-top: 30px;
@@ -190,7 +190,7 @@
     align-items: center;
 }
 
-.contenedor-proyecto .nombre{
+.contenedor-proyecto .nombre {
     padding: 20px;
     margin-bottom: 15px;
     width: 500px;
@@ -199,7 +199,7 @@
     text-align: center;
 }
 
-.contenedor-proyecto{
+.contenedor-proyecto {
     display: flex;
 }
 
@@ -207,4 +207,22 @@
     margin-left: 20px;
     height: 50px;
     width: auto;
+}
+
+/*Visualizar proyectos*/
+table, th, td{
+    background-color: white;
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px 6px;
+    text-align: center;
+}
+
+.tabla{
+    width: 100%;
+}
+
+.texto-izquierda{
+    text-align: left;
+    font-weight: bold;
 }

@@ -6,11 +6,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-
+import com.app.web.servicio.APUItemSubproyectoServicio;
+import com.app.web.servicio.APUServicio;
+import com.app.web.servicio.ItemSubproyectoServicio;
+import com.app.web.servicio.ManoObraAPUItemSubproyectoServicio;
+import com.app.web.servicio.MaquinariaAPUItemSubproyectoServicio;
+import com.app.web.servicio.MaterialAPUItemSubproyectoServicio;
 import com.app.web.servicio.ProyectoServicio;
 import com.app.web.servicio.SubproyectoServicio;
+import com.app.web.servicio.TransporteServicio;
 import com.app.web.entidad.Proyecto;
 import com.app.web.entidad.Subproyecto;
+import com.app.web.entidad.Transporte;
+import com.app.web.entidad.ItemSubproyecto;
+import com.app.web.entidad.ManoObraAPUItemSubproyecto;
+import com.app.web.entidad.MaquinariaAPUItemSubproyecto;
+import com.app.web.entidad.MaterialAPUItemSubproyecto;
+import com.app.web.entidad.APUItemSubproyecto;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -26,15 +38,32 @@ public class SubproyectoControlador {
 	private SubproyectoServicio servicio;
 	@Autowired
 	private ProyectoServicio proyectoServicio;
+	@Autowired
+	private APUItemSubproyectoServicio apuItemSubproyectoServicio;
+	@Autowired
+	private ItemSubproyectoServicio itemSubproyectoServicio;
+	@Autowired
+	private MaterialAPUItemSubproyectoServicio materialAPUItemSubproyectoServicio;
+	@Autowired
+	private TransporteServicio transporteServicio;
+	@Autowired
+	private MaquinariaAPUItemSubproyectoServicio maquinariaAPUItemSubproyectoServicio;
+	@Autowired
+	private ManoObraAPUItemSubproyectoServicio manoObraAPUItemSubproyectoServicio;
 
 	@GetMapping({ "/Proyectos/{proyectoId}/Subproyectos" }) //URL
 	public String listarSubproyectosDeUnProyecto(@PathVariable int proyectoId, Model model) { //Se captura el id del proyecto mediante la URL
 		Proyecto proyecto = proyectoServicio.obtenerProyectoPorId(proyectoId); //Se obtiene el proyecto mediante el id
 		List<Subproyecto> subproyectos = servicio.listarTodosLosSubproyectosDeUnProyecto(proyecto); //se listan los Subproyectos de dicho proyecto
+		
 		model.addAttribute("proyecto", proyecto); //se envia el proyecto en cuestion
 		model.addAttribute("subproyectos", subproyectos);//Se envian todos los subproyectos visibles de ese proyecto
+		model.addAttribute("servicio", servicio);
+		
 		return "Subproyectos/Ver_Subproyectos"; //plantilla que carga el metodo
 	}
+	
+	
 
 	@GetMapping("/Proyectos/{proyectoId}/Subproyectos/Nuevo_Subproyecto")//URL
 	public String mostrarFormularioDeRegistrarSubproyectos(@PathVariable int proyectoId, Model modelo) {

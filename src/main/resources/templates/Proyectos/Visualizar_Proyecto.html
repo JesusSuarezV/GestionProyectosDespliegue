@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar proyectos</title>
+    <div th:replace="Menu.html"></div>
+        <div class="contenedor"> <!--Div general del contenido-->
+            <table class="tabla"><!--Tabla de costos de proyectos-->
+                <thead class="cabecera"> 
+                    <tr>
+                        <th class="titulo-proyecto" colspan="7" th:text="${proyecto.nombre}"></th>
+                    </tr>
+                </thead>
+                <tbody> <!--Cuerpo de la tabla-->
+                    <tr>
+                        <td class="subtitulo" colspan="7">PRESUPUESTO DE OBRA</td>
+                    </tr>
+                    <tr> <!--Filas-->
+                        <td>ITEMS</td> <!--Columnas-->
+                        <td>DESCRIPCIÓN ACTIVIDADES</td>
+                        <td>UND</td>
+                        <td>CANT</td>
+                        <td>VR. UNIT</td>
+                        <td>VR. PARCIAL</td>
+                        <td>VR. CAPITULO</td>
+                    </tr>
+                </tbody>
+                <tbody th:utext="${elementos}">
+                </tbody>
+            </table>
+        </div>
+    </div>
+   <script th:src="@{/js/script.js}"></script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editar Mano de Obra Asignada</title>
+<div th:replace="Menu.html"></div>
+<div class="contenedor-principal" id="contenedor-move">
+	<a class="boton-volver" href="/ManoObra">VOLVER</a>
+	<form th:action="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/'+ ${apuItemSubproyecto.id} + '/Recursos/ManoObras/' + ${manoObra.id} + '/Actualizar'}" th:object="${manoObra}" method="POST">
+		<div class="contenedor-play-subproyecto">
+			<div class="proyecto-play">
+			
+				</div>
+				
+				<div class="ubicacion">
+    					<a>CANTIDAD</a>
+    						<div class="texto">
+        						<input class="cuadro-texto" type="number" id="cantidad" name="cantidad" th:field="*{cantidad}" placeholder="Digite la nueva cantidad: " required>
+    						</div>
+    					
+			</div>
+			<br>
+			
+			<div class="ubicacion">
+    					<a>JORNAL</a>
+    						<div class="texto">
+        						<input class="cuadro-texto" type="text" id="jornal" name="jornal" th:field="*{jornal}" placeholder="Digite el nuevo jornal: " required pattern="^\d+(\.\d+)?$">
+    						</div>
+    					
+			</div>
+			<br>
+			<div class="ubicacion">
+    					<a>PRESTACION</a>
+    						<div class="texto">
+        						<input class="cuadro-texto" type="text" id="prestacion" name="prestacion" th:field="*{prestacion}" placeholder="Digite la nueva prestacion: " required pattern="^\d+(\.\d+)?$">
+    						</div>
+    					
+			</div>
+			<br>
+				
+				<div class="ubicacion">
+    					<a>RDTO</a>
+    						<div class="texto">
+        						<input class="cuadro-texto" type="text" id="rdto" name="rdto" th:field="*{rdto}" placeholder="Digite el nuevo rdto: " required pattern="^\d+(\.\d+)?$">
+    						</div>
+    					
+			</div>
+			
+			
+			<button type="submit" class="boton-subproyecto">ACTUALIZAR MAQUINARIA</button>
+		</div>
+		</form>
+</div>
+</div>
+</div>
+<script th:src="@{/js/script.js}"></script>
+</body>
+
+</html>

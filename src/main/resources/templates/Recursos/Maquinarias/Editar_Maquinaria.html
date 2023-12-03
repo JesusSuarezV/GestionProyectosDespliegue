@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editar Maquinaria Asignada</title>
+<div th:replace="Menu.html"></div>
+<div class="contenedor-principal" id="contenedor-move">
+	<a class="boton-volver" href="/Maquinaria">VOLVER</a>
+	<form th:action="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/'+ ${apuItemSubproyecto.id} + '/Recursos/Maquinarias/' + ${maquinaria.id} + '/Actualizar'}" th:object="${maquinaria}" method="POST">
+		<div class="contenedor-play-subproyecto">
+			<div class="proyecto-play">
+			
+				</div>
+				
+				<div class="ubicacion">
+    					<a>TARIFA</a>
+    						<div class="texto">
+        						<input class="cuadro-texto" type="number" id="tarifa" name="tarifa" th:field="*{tarifa}" placeholder="Digite la nueva tarifa:  " required>
+    						</div>
+    					
+			</div>
+			<br>
+				
+				<div class="ubicacion">
+    					<a>RDTO</a>
+    						<div class="texto">
+        						<input class="cuadro-texto" type="text" id="rdto" name="rdto" th:field="*{rdto}" placeholder="Digite el nuevo rdto: " required pattern="^\d+(\.\d+)?$">
+    						</div>
+    					
+			</div>
+			
+			
+			<button type="submit" class="boton-subproyecto">ACTUALIZAR MAQUINARIA</button>
+		</div>
+		</form>
+</div>
+</div>
+</div>
+<script th:src="@{/js/script.js}"></script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang=xmlns:th="http://www.thymeleaf.org" "en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista de Transportes asignados</title>
+<div th:replace="Menu.html"></div>
+<div class="contenedor-principal" id="contenedor-move">
+	<a class="boton-volver" href="/Proyectos">VOLVER</a>
+	<div class="contenedor-play">
+		<div class="nombre">
+			<div class="contenedor-proyecto">
+				<div class="nombre">
+					<a th:text="'TRANSPORTES - ' + ${apuItemSubproyecto.apu.nombre}"></a>
+				</div>
+			</div>
+			<div class="ubicacion">
+                        <a>PRECIO TRANSPORTE</a>
+                        <div class="nombre-ubicacion">
+                            <a th:text="${total}"></a>
+                        </div>
+                    </div>
+		</div>
+	</div>
+		<tr th:each="transporte : ${transportes}">
+		<div class="contenedor-play-subproyecto">
+			<div class="proyecto-play">
+				<div class="contenedor-proyecto">
+					<div class="nombre">
+						<a th:text="${transporte.materialAPUItemSubproyecto.material.nombre}"></a>
+					</div>
+					<div class="logos-proyecto">
+						<a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/'+ ${apuItemSubproyecto.id} + '/Recursos/Transportes/' + ${transporte.id} + '/Editar'}"><img class="icon-proyecto" th:src="@{/imagenes/editar.png}"></a>
+						<a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/'+ ${apuItemSubproyecto.id} + '/Recursos/Transportes/' + ${transporte.id} + '/Ocultar'}" onclick="return confirmarOcultar();"><img class="icon-proyecto" th:src="@{/imagenes/delete.png}"></a>
+					</div>
+				</div>
+				<div class="ubicacion">
+					<a>CANTIDAD</a>
+					<div class="nombre-ubicacion">
+						<a th:text="${transporte.materialAPUItemSubproyecto.cantidad}"></a>
+					</div>
+				</div>
+				<div class="ubicacion">
+					<a>DISTANCIA</a>
+					<div class="nombre-ubicacion">
+						<a th:text="${transporte.distancia}"></a>
+					</div>
+				</div>
+				<div class="ubicacion">
+					<a>M3*KM</a>
+					<div class="nombre-ubicacion">
+						<a th:text="${transporte.getCantidadKM()}"></a>
+					</div>
+				</div>
+				<div class="ubicacion">
+					<a>Precio X KM</a>
+					<div class="nombre-ubicacion">
+						<a th:text="${transporte.precio}"></a>
+					</div>
+				</div>
+				<div class="ubicacion">
+					<a>V/Parcial</a>
+					<div class="nombre-ubicacion">
+						<a th:text="${transporte.getValorParcial()}"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+	</tr>
+	<a class="boton-subproyecto" th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/'+ ${apuItemSubproyecto.id} + '/Recursos/Transportes/Asignar_Transporte'}">ASIGNAR TRANSPORTE</a>
+	</div>
+</div>
+<script th:src="@{/js/script.js}"></script>
+</body>
+
+</html>

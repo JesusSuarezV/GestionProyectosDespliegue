@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crear Item</title>
+<div th:replace="Menu.html"></div>
+<div class="contenedor-principal" id="contenedor-move">
+	<a class="boton-volver" href="/APU">VOLVER</a>
+	<form th:action="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/'+ ${subproyecto.id} +'/Items/' + ${itemSubproyecto.id} +'/APU/Guardar'}" th:object="${apuItemSubproyecto}" method="POST">
+		<div class="contenedor-play-subproyecto">
+			<div class="proyecto-play">
+			
+				<div class="ubicacion">
+					<a>APU</a>
+					<label for="apuId" class="texto">
+						<select class="cuadro-texto" id="apuId" name="apuId" required>
+                        <option th:each="apu : ${apu}" th:value="${apu.id}" th:text="${apu.nombre}"></option>
+                    </select>
+					</label>
+					
+					
+					</div>
+				</div>
+				<br>
+				<div class="ubicacion">
+    					<a>CANTIDAD</a>
+    						<div class="texto">
+        						<input class="cuadro-texto" type="text" id="cantidad" name="cantidad" required pattern="^\d+(\.\d+)?$">
+    						</div>
+			</div>
+			<button type="submit" class="boton-subproyecto">ASIGNAR APU</button>
+		</div>
+		</form>
+</div>
+</div>
+</div>
+<script th:src="@{/js/script.js}"></script>
+</body>
+
+</html>
