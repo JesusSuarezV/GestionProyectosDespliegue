@@ -44,6 +44,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				"/imagenes/**",
 				"/").permitAll()
 		.antMatchers("/Iniciar_Sesion").anonymous()
+		.antMatchers("/Iniciar_Sesion?logout").anonymous()
+		.antMatchers("/Iniciar_Sesion?error").anonymous()
 		.antMatchers("/Recuperar_Contrasena/**").anonymous()
 		.antMatchers("/Recuperar_Contrasena?Exito").anonymous()
 		.antMatchers("/Recuperar_Contrasena?Error").anonymous()

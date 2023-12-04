@@ -30,8 +30,11 @@
                 <tbody th:utext="${elementos}">
                 </tbody>
             </table>
+            <a class="boton-subproyecto" th:href="@{'/Proyectos/' + ${proyecto.id} + '/Visualizar/Generar_PDF'}">DESCARGAR</a>
         </div>
+        
     </div>
+    
    <script th:src="@{/js/script.js}"></script>
 </body>
 

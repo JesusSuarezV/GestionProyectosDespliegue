@@ -7,7 +7,7 @@
 <title>Editar Transporte Asignado</title>
 <div th:replace="Menu.html"></div>
 <div class="contenedor-principal" id="contenedor-move">
-	<a class="boton-volver" href="/Material">VOLVER</a>
+	<a class="boton-volver" th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/' + ${apuItemSubproyecto.id} + '/Recursos/Transportes'}">VOLVER</a>
 	<form th:action="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/'+ ${apuItemSubproyecto.id} + '/Recursos/Transportes/' + ${transporte.id} + '/Actualizar'}" th:object="${transporte}" method="POST">
 		<div class="contenedor-play-subproyecto">
 			<div class="proyecto-play">

@@ -22,8 +22,6 @@ public class SubproyectoServicio {
 	@Autowired
     private SubproyectoRepositorio repositorio;
 	@Autowired
-	private ProyectoServicio proyectoServicio;
-	@Autowired
 	private APUItemSubproyectoServicio apuItemSubproyectoServicio;
 	@Autowired
 	private ItemSubproyectoServicio itemSubproyectoServicio;

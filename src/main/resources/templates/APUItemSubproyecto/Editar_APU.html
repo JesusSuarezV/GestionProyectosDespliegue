@@ -7,7 +7,7 @@
 <title>Editar APU Asignado</title>
 <div th:replace="Menu.html"></div>
 <div class="contenedor-principal" id="contenedor-move">
-	<a class="boton-volver" href="/APU">VOLVER</a>
+	<a class="boton-volver" th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU'}">VOLVER</a>
 	<form th:action="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/'+ ${subproyecto.id} +'/Items/' + ${itemSubproyecto.id} +'/APU/' + ${apu.id} + '/Actualizar'}" th:object="${apu}" method="POST">
 		<div class="contenedor-play-subproyecto">
 			<div class="proyecto-play">

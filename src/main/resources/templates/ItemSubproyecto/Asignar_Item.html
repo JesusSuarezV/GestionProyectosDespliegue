@@ -7,7 +7,7 @@
 <title>Crear Item</title>
 <div th:replace="Menu.html"></div>
 <div class="contenedor-principal" id="contenedor-move">
-	<a class="boton-volver" href="/Items">VOLVER</a>
+	<a class="boton-volver" th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items'}">VOLVER</a>
 	<form th:action="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/'+ ${subproyecto.id} +'/Items/Guardar'}" th:object="${itemSubproyecto}" method="POST">
 		<div class="contenedor-play-subproyecto">
 			<div class="proyecto-play">

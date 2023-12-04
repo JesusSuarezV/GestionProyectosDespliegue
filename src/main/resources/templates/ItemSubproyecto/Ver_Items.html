@@ -7,7 +7,7 @@
     <title>Lista de Items Asignados</title>
     <div th:replace="Menu.html"></div>
     <div class="contenedor-principal" id="contenedor-move">
-            <a class="boton-volver" href="/Proyectos">VOLVER</a>
+            <a class="boton-volver" th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos'}">VOLVER</a>
             <div class="contenedor-play-subproyecto">
                 <div class="proyecto-play">
                     <div class="contenedor-proyecto">

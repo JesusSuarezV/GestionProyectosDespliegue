@@ -20,7 +20,9 @@
             </div>
             <div class="botones">
             	<button type="submit" class="boton boton-verde">GUARDAR</button>
-                <button type="button" onclick="window.location.href='/Proyectos/{id}/Subproyectos'" class="boton boton-rojo">CANCELAR</button>
+                <a th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos'}">
+        			<button type="button" class="boton boton-rojo">CANCELAR</button>
+    			</a>
             </form>
         </div>
     </div>

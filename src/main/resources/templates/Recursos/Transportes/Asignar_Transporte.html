@@ -7,7 +7,7 @@
 <title>Asignar Transporte</title>
 <div th:replace="Menu.html"></div>
 <div class="contenedor-principal" id="contenedor-move">
-	<a class="boton-volver" href="/Materiales">VOLVER</a>
+	<a class="boton-volver" th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/' + ${apuItemSubproyecto.id} + '/Recursos/Transportes'}">VOLVER</a>
 	<form th:action="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/'+ ${apuItemSubproyecto.id} + '/Recursos/Transportes/Guardar'}" th:object="${transporte}" method="POST">
 		<div class="contenedor-play-subproyecto">
 			<div class="proyecto-play">

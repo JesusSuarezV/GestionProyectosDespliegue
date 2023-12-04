@@ -7,7 +7,7 @@
 <title>Lista de Materiales asignados</title>
 <div th:replace="Menu.html"></div>
 <div class="contenedor-principal" id="contenedor-move">
-	<a class="boton-volver" href="/Proyectos">VOLVER</a>
+	<a class="boton-volver" th:href="@{'/Proyectos/' + ${proyecto.id} + '/Subproyectos/' + ${subproyecto.id} + '/Items/' + ${itemSubproyecto.id} + '/APU/' + ${apuItemSubproyecto.id} + '/Recursos'}">VOLVER</a>
 	<div class="contenedor-play">
 		<div class="nombre">
 			<div class="contenedor-proyecto">
