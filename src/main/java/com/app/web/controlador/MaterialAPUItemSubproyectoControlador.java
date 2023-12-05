@@ -14,6 +14,7 @@ import com.app.web.servicio.MaterialAPUItemSubproyectoServicio;
 import com.app.web.servicio.MaterialServicio;
 import com.app.web.servicio.ProyectoServicio;
 import com.app.web.servicio.SubproyectoServicio;
+import com.app.web.servicio.TransporteServicio;
 import com.app.web.entidad.APUItemSubproyecto;
 import com.app.web.entidad.APU;
 import com.app.web.entidad.ItemSubproyecto;
@@ -21,6 +22,7 @@ import com.app.web.entidad.Material;
 import com.app.web.entidad.MaterialAPUItemSubproyecto;
 import com.app.web.entidad.Proyecto;
 import com.app.web.entidad.Subproyecto;
+import com.app.web.entidad.Transporte;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -44,6 +46,8 @@ public class MaterialAPUItemSubproyectoControlador {
 	private APUItemSubproyectoServicio apuItemSubproyectoServicio;
 	@Autowired
 	private MaterialServicio materialServicio;
+	@Autowired
+	private TransporteServicio transporteServicio;
 	
 	@GetMapping({ "/Proyectos/{proyectoId}/Subproyectos/{subproyectoId}/Items/{itemSubproyectoId}/APU/{apuItemSubproyectoId}/Recursos/Materiales" }) 
 	public String listarMaterialesDeUnAPU(@PathVariable int proyectoId, @PathVariable int subproyectoId, @PathVariable int itemSubproyectoId, @PathVariable int apuItemSubproyectoId,Model model) {
@@ -125,6 +129,16 @@ public class MaterialAPUItemSubproyectoControlador {
 	public String ocultarMaterialAPUItemSubproyecto(@PathVariable int id, @PathVariable int proyectoId, @PathVariable int subproyectoId, @PathVariable int itemSubproyectoId, @PathVariable int apuItemSubproyectoId, Model model) {
 
 		servicio.ocultarMaterialAPUItemSubproyecto(id);
+		
+		List<Transporte> transportes = transporteServicio.listarTodosLoTransportesDeUnAPU(apuItemSubproyectoServicio.obtenerAPUItemSubproyectoPorId(apuItemSubproyectoId));
+		for(Transporte transporte : transportes) {
+			
+			if (transporte.getMaterialAPUItemSubproyecto().getId() == id && transporte.isVisibilidad() == true) {
+				transporteServicio.ocultarTransporte(transporte.getId());
+			}
+			
+		}
+		
 		return "redirect:/Proyectos/{proyectoId}/Subproyectos/{subproyectoId}/Items/{itemSubproyectoId}/APU/{apuItemSubproyectoId}/Recursos/Materiales"; //URL en donde retorna el metodo
 
 	}

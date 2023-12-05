@@ -22,14 +22,6 @@ public class ItemSubproyectoServicio {
 	
 	@Autowired
 	private APUItemSubproyectoServicio apuItemSubproyectoServicio;
-	@Autowired
-	private MaterialAPUItemSubproyectoServicio materialAPUItemSubproyectoServicio;
-	@Autowired
-	private TransporteServicio transporteServicio;
-	@Autowired
-	private MaquinariaAPUItemSubproyectoServicio maquinariaAPUItemSubproyectoServicio;
-	@Autowired
-	private ManoObraAPUItemSubproyectoServicio manoObraAPUItemSubproyectoServicio;
 
 	public List<ItemSubproyecto> listarTodosLosItemsDeUnSubproyecto(Subproyecto subproyecto) {
 		return repositorio.findBySubproyectoAndVisibilidadTrue(subproyecto);
@@ -55,29 +47,20 @@ public class ItemSubproyectoServicio {
 
 	}
 	
-	public double obtenerValorDelItemSubproyecto(ItemSubproyecto itemSubproyecto) {
-		
-		double valorItemSubproyecto = 0;
-		double valorAPU = 0;
-		List<APUItemSubproyecto>apuSubproyetos = apuItemSubproyectoServicio.listarTodosLosAPUDeUnItemDeUnSubproyecto(itemSubproyecto);
-		for(APUItemSubproyecto apuItemSubproyecto : apuSubproyetos) {
-			valorAPU = 0;
-			List<MaterialAPUItemSubproyecto> materiales = materialAPUItemSubproyectoServicio.listarTodosLosMaterialesDeUnAPU(apuItemSubproyecto);
-			valorAPU += materiales.stream().mapToDouble(MaterialAPUItemSubproyecto::getValorParcial).sum();
-			List<Transporte> transportes = transporteServicio.listarTodosLoTransportesDeUnAPU(apuItemSubproyecto);
-			valorAPU += transportes.stream().mapToDouble(Transporte::getValorParcial).sum();
-			List<MaquinariaAPUItemSubproyecto> maquinarias = maquinariaAPUItemSubproyectoServicio.listarTodasLasMaquinariasDeUnAPU(apuItemSubproyecto);
-			valorAPU += maquinarias.stream().mapToDouble(MaquinariaAPUItemSubproyecto::getValorParcial).sum();
-			List<ManoObraAPUItemSubproyecto> manoObras = manoObraAPUItemSubproyectoServicio.listarTodasLasManosDeObraDeUnAPU(apuItemSubproyecto);
-			valorAPU += manoObras.stream().mapToDouble(ManoObraAPUItemSubproyecto::getValorParcial).sum();
-			
-			valorItemSubproyecto += valorAPU * apuItemSubproyecto.getCantidad();
-			
+	public double obtenerValorDeUnItemSubproyecto(ItemSubproyecto itemSubproyecto) {
+
+		double valor = 0;
+		List<APUItemSubproyecto> apuSubproyetos = apuItemSubproyectoServicio
+				.listarTodosLosAPUDeUnItemDeUnSubproyecto(itemSubproyecto);
+		for (APUItemSubproyecto apuItemSubproyecto : apuSubproyetos) {
+
+			valor += apuItemSubproyectoServicio.obtenerValorDeUnAPUItemSubproyecto(apuItemSubproyecto);
 		}
+
+		valor = Math.round(valor * 100d)/100d;
 		
-		return Math.round(valorItemSubproyecto * 100d)/100d;
-		
-		
+		return valor;
+
 	}
 	
 	

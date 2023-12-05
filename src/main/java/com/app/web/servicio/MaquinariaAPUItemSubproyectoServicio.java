@@ -46,5 +46,18 @@ public class MaquinariaAPUItemSubproyectoServicio {
 		return repositorio.obtenerMaximoId();
 
 	}
+	
+	public double obtenerValorDeMaquinariasDeUnAPUItemSubproyecto(APUItemSubproyecto apuItemSubproyecto) {
+		 double valor = 0;
+		 List<MaquinariaAPUItemSubproyecto> maquinariaAPUItemSubproyectos = listarTodasLasMaquinariasDeUnAPU(apuItemSubproyecto);
+		 for(MaquinariaAPUItemSubproyecto maquinariaAPUItemSubproyecto : maquinariaAPUItemSubproyectos){
+			 valor += maquinariaAPUItemSubproyecto.getValorParcial();
+		 }
+		 
+		 valor = Math.round(valor * 100d)/100d;
+		 
+		return valor;
+		 
+	 }
 
 }

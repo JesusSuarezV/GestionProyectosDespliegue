@@ -48,5 +48,18 @@ public class ManoObraAPUItemSubproyectoServicio {
 		return repositorio.obtenerMaximoId();
 
 	}
+	
+	public double obtenerValorDeManoDeObrasDeUnAPUItemSubproyecto(APUItemSubproyecto apuItemSubproyecto) {
+		 double valor = 0;
+		 List<ManoObraAPUItemSubproyecto> manoObraAPUItemSubproyectos = listarTodasLasManosDeObraDeUnAPU(apuItemSubproyecto);
+		 for(ManoObraAPUItemSubproyecto manoObraAPUItemSubproyecto : manoObraAPUItemSubproyectos){
+			 valor += manoObraAPUItemSubproyecto.getValorParcial();
+		 }
+		 
+		 valor = Math.round(valor * 100d)/100d;
+		 
+		return valor;
+		 
+	 }
 
 }

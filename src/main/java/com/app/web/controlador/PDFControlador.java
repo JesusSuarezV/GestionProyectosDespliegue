@@ -74,11 +74,6 @@ public class PDFControlador {
         double subItem = 0;
         double apu = 0;
         double apuSum = 0.1;
-        double valorUnitario = 0;
-        double valorParcial = 0;
-		double valorCapitulo = 0;
-		double subtotalSubproyecto = 0;
-		double valorTotal = 0;
         
         Document document = new Document(PageSize.A4);
         PdfWriter.getInstance(document, response.getOutputStream());
@@ -111,7 +106,6 @@ public class PDFControlador {
         
         List<Subproyecto> subproyectos = subproyectoServicio.listarTodosLosSubproyectosDeUnProyecto(proyecto);
         for (Subproyecto subproyecto : subproyectos) {
-        	subtotalSubproyecto = 0;
         	item = 0;
         	table = new PdfPTable(1);
         	table.addCell(getCell(subproyecto.getNombre(), 1, verdanaFont, Element.ALIGN_CENTER));
@@ -120,7 +114,6 @@ public class PDFControlador {
         	for(ItemSubproyecto itemSubproyecto : itemSubproyectos) {
         		item++;
         		apu = 0;
-        		valorCapitulo = itemSubproyectoServicio.obtenerValorDelItemSubproyecto(itemSubproyecto);
         		table = new PdfPTable(7);
         		table.addCell(getCell(item + "", 1, verdanaFont, Element.ALIGN_CENTER));
             	table.addCell(getCell(itemSubproyecto.getItem().getNombre(), 1, verdanaFont, Element.ALIGN_CENTER));
@@ -128,19 +121,10 @@ public class PDFControlador {
             	table.addCell(getCell("", 1, verdanaFont, Element.ALIGN_CENTER));
             	table.addCell(getCell("", 1, verdanaFont, Element.ALIGN_CENTER));
             	table.addCell(getCell("", 1, verdanaFont, Element.ALIGN_CENTER));
-            	table.addCell(getCell(valorCapitulo+"", 1, verdanaFont, Element.ALIGN_CENTER));
+            	table.addCell(getCell(itemSubproyectoServicio.obtenerValorDeUnItemSubproyecto(itemSubproyecto)+"", 1, verdanaFont, Element.ALIGN_CENTER));
             	document.add(table);
             	List<APUItemSubproyecto> apuItemSubproyectos = apuItemSubproyectoServicio.listarTodosLosAPUDeUnItemDeUnSubproyecto(itemSubproyecto);
             	for(APUItemSubproyecto apuItemSubproyecto : apuItemSubproyectos) {
-            		valorUnitario = 0;
-					List<MaterialAPUItemSubproyecto> materiales = materialAPUItemSubproyectoServicio.listarTodosLosMaterialesDeUnAPU(apuItemSubproyecto);
-					valorUnitario += materiales.stream().mapToDouble(MaterialAPUItemSubproyecto::getValorParcial).sum();
-					List<Transporte> transportes = transporteServicio.listarTodosLoTransportesDeUnAPU(apuItemSubproyecto);
-					valorUnitario += transportes.stream().mapToDouble(Transporte::getValorParcial).sum();
-					List<MaquinariaAPUItemSubproyecto> maquinarias = maquinariaAPUItemSubproyectoServicio.listarTodasLasMaquinariasDeUnAPU(apuItemSubproyecto);
-					valorUnitario += maquinarias.stream().mapToDouble(MaquinariaAPUItemSubproyecto::getValorParcial).sum();
-					List<ManoObraAPUItemSubproyecto> manoObras = manoObraAPUItemSubproyectoServicio.listarTodasLasManosDeObraDeUnAPU(apuItemSubproyecto);
-					valorUnitario += manoObras.stream().mapToDouble(ManoObraAPUItemSubproyecto::getValorParcial).sum();
             		apu += apuSum;
             		subItem = item;
             		if (apu == 1) {
@@ -148,7 +132,6 @@ public class PDFControlador {
 						apuSum = apuSum/10;
 					}
             		subItem += apu;
-            		valorParcial = valorUnitario * apuItemSubproyecto.getCantidad();
             		
             		
             		table = new PdfPTable(7);
@@ -156,26 +139,25 @@ public class PDFControlador {
                 	table.addCell(getCell(apuItemSubproyecto.getApu().getNombre(), 1, verdanaFont, Element.ALIGN_CENTER));
                 	table.addCell(getCell(apuItemSubproyecto.getApu().getUnidad(), 1, verdanaFont, Element.ALIGN_CENTER));
                 	table.addCell(getCell(apuItemSubproyecto.getCantidad() + "", 1, verdanaFont, Element.ALIGN_CENTER));
-                	table.addCell(getCell(valorUnitario + "", 1, verdanaFont, Element.ALIGN_CENTER));
-                	table.addCell(getCell(Math.round(valorParcial * 100d)/100d + "", 1, verdanaFont, Element.ALIGN_CENTER));
+                	table.addCell(getCell(apuItemSubproyectoServicio.obtenerValorUnitarioDeUnAPUItemSubproyecto(apuItemSubproyecto) + "", 1, verdanaFont, Element.ALIGN_CENTER));
+                	table.addCell(getCell(apuItemSubproyectoServicio.obtenerValorDeUnAPUItemSubproyecto(apuItemSubproyecto)+ "", 1, verdanaFont, Element.ALIGN_CENTER));
                 	table.addCell(getCell("", 1, verdanaFont, Element.ALIGN_CENTER));
                 	document.add(table);
             	}
-            	subtotalSubproyecto += valorCapitulo;
+            	
         	}
         	
         	table = new PdfPTable(7);
         	table.addCell(getCell("", 1, verdanaFont, Element.ALIGN_CENTER));
         	table.addCell(getCell("SUBTOTAL " + subproyecto.getNombre(), 5, verdanaBFont, Element.ALIGN_LEFT));
-        	table.addCell(getCell(subtotalSubproyecto + "", 1, verdanaFont, Element.ALIGN_CENTER));
+        	table.addCell(getCell(subproyectoServicio.obtenerValorDeUnSubproyecto(subproyecto) + "", 1, verdanaFont, Element.ALIGN_CENTER));
         	document.add(table);
-        	valorTotal += subtotalSubproyecto;
         }
         
         table = new PdfPTable(7);
     	table.addCell(getCell("", 1, verdanaFont, Element.ALIGN_CENTER));
     	table.addCell(getCell("COSTO TOTAL DEL PROYECTO", 5, verdanaBFont, Element.ALIGN_LEFT));
-    	table.addCell(getCell(valorTotal + "", 1, verdanaFont, Element.ALIGN_CENTER));
+    	table.addCell(getCell(servicio.obtenerValorDeUnProyecto(proyecto) + "", 1, verdanaFont, Element.ALIGN_CENTER));
     	document.add(table);
         
         document.close();

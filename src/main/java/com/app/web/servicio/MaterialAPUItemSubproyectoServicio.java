@@ -49,5 +49,18 @@ public class MaterialAPUItemSubproyectoServicio {
 	 public List<MaterialAPUItemSubproyecto> obtenerMaterialAsignadoNoTransportado(int APUitemSubproyectoId) {
 	    	return repositorio.findMaterialesAsignadosNotInTransporte(APUitemSubproyectoId);
 	    }
+	 
+	 public double obtenerValorDeMaterialesDeUnAPUItemSubproyecto(APUItemSubproyecto apuItemSubproyecto) {
+		 double valor = 0;
+		 List<MaterialAPUItemSubproyecto> materialAPUItemSubproyectos = listarTodosLosMaterialesDeUnAPU(apuItemSubproyecto);
+		 for(MaterialAPUItemSubproyecto materialAPUItemSubproyecto : materialAPUItemSubproyectos){
+			 valor += materialAPUItemSubproyecto.getValorParcial();
+		 }
+		 
+		 valor = Math.round(valor * 100d)/100d;
+		 
+		return valor;
+		 
+	 }
 
 }

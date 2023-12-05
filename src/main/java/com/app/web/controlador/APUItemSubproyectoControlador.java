@@ -137,22 +137,13 @@ public class APUItemSubproyectoControlador {
 		
 		APUItemSubproyecto apuItemSubproyecto = servicio.obtenerAPUItemSubproyectoPorId(id);
 		
-		List<MaterialAPUItemSubproyecto> materiales = materialAPUItemSubproyectoServicio.listarTodosLosMaterialesDeUnAPU(apuItemSubproyecto);
-		double totalMaterial = materiales.stream().mapToDouble(MaterialAPUItemSubproyecto::getValorParcial).sum();
-		totalMaterial = Math.round(totalMaterial * 100d) / 100d;
-
+		double totalMaterial = materialAPUItemSubproyectoServicio.obtenerValorDeMaterialesDeUnAPUItemSubproyecto(apuItemSubproyecto);
 		
-		List<Transporte> transportes = transporteServicio.listarTodosLoTransportesDeUnAPU(apuItemSubproyecto);
-		double totalTransporte = transportes.stream().mapToDouble(Transporte::getValorParcial).sum();
-		totalTransporte = Math.round(totalTransporte * 100d) / 100d;
+		double totalTransporte = transporteServicio.obtenerValorDeTansporteDeUnAPUItemSubproyecto(apuItemSubproyecto);
 		
-		List<MaquinariaAPUItemSubproyecto> maquinarias = maquinariaAPUItemSubproyectoServicio.listarTodasLasMaquinariasDeUnAPU(apuItemSubproyecto);
-		double totalMaquinaria = maquinarias.stream().mapToDouble(MaquinariaAPUItemSubproyecto::getValorParcial).sum();
-		totalMaquinaria = Math.round(totalMaquinaria * 100d) / 100d;
+		double totalMaquinaria = maquinariaAPUItemSubproyectoServicio.obtenerValorDeMaquinariasDeUnAPUItemSubproyecto(apuItemSubproyecto);
 		
-		List<ManoObraAPUItemSubproyecto> manoObras = manoObraAPUItemSubproyectoServicio.listarTodasLasManosDeObraDeUnAPU(apuItemSubproyecto);
-		double totalManoObra = manoObras.stream().mapToDouble(ManoObraAPUItemSubproyecto::getValorParcial).sum();
-		totalManoObra = Math.round(totalManoObra * 100d) / 100d;
+		double totalManoObra = manoObraAPUItemSubproyectoServicio.obtenerValorDeManoDeObrasDeUnAPUItemSubproyecto(apuItemSubproyecto);
 		
 		model.addAttribute("proyecto", proyectoServicio.obtenerProyectoPorId(proyectoId)); 
 		model.addAttribute("subproyecto", subproyectoServicio.obtenerSubproyectoPorId(subproyectoId));

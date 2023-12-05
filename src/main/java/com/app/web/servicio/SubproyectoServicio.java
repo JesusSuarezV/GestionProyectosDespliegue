@@ -73,43 +73,19 @@ public class SubproyectoServicio {
     	
     }
     
-    public double obtenerTotal(Subproyecto subproyecto) {
-		double totalSubproyecto = 0;
-		double totalAPU = 0;
-		List<ItemSubproyecto> itemSubproyectos = itemSubproyectoServicio.listarTodosLosItemsDeUnSubproyecto(subproyecto);
+	public double obtenerValorDeUnSubproyecto(Subproyecto subproyecto) {
+		double valor = 0;
+		List<ItemSubproyecto> itemSubproyectos = itemSubproyectoServicio
+				.listarTodosLosItemsDeUnSubproyecto(subproyecto);
 		for (ItemSubproyecto itemSubproyecto : itemSubproyectos) {
-			List<APUItemSubproyecto> apuItemSubproyectos = apuItemSubproyectoServicio.listarTodosLosAPUDeUnItemDeUnSubproyecto(itemSubproyecto);
-				for (APUItemSubproyecto apuItemSubproyecto : apuItemSubproyectos) {
-					
-					totalAPU = 0;
-					
-					List<MaterialAPUItemSubproyecto> materiales = materialAPUItemSubproyectoServicio.listarTodosLosMaterialesDeUnAPU(apuItemSubproyecto);
-					totalAPU += materiales.stream().mapToDouble(MaterialAPUItemSubproyecto::getValorParcial).sum();
-					
+			valor += itemSubproyectoServicio.obtenerValorDeUnItemSubproyecto(itemSubproyecto);
 
-					
-					List<Transporte> transportes = transporteServicio.listarTodosLoTransportesDeUnAPU(apuItemSubproyecto);
-					totalAPU += transportes.stream().mapToDouble(Transporte::getValorParcial).sum();
-					
-					
-					List<MaquinariaAPUItemSubproyecto> maquinarias = maquinariaAPUItemSubproyectoServicio.listarTodasLasMaquinariasDeUnAPU(apuItemSubproyecto);
-					totalAPU += maquinarias.stream().mapToDouble(MaquinariaAPUItemSubproyecto::getValorParcial).sum();
-					
-					
-					List<ManoObraAPUItemSubproyecto> manoObras = manoObraAPUItemSubproyectoServicio.listarTodasLasManosDeObraDeUnAPU(apuItemSubproyecto);
-					totalAPU += manoObras.stream().mapToDouble(ManoObraAPUItemSubproyecto::getValorParcial).sum();
-					
-					totalAPU = totalAPU * apuItemSubproyecto.getCantidad();
-					
-					totalSubproyecto += totalAPU;
-					
-				}
-			
 		}
-		totalSubproyecto = Math.round(totalSubproyecto * 100d) / 100d;
-		return totalSubproyecto;
+
+		valor = Math.round(valor * 100d)/100d;
 		
-		
+		return valor;
+
 	}
     
     

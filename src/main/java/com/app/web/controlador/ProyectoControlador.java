@@ -110,43 +110,23 @@ public class ProyectoControlador {
 		double subItem = 0;
 		double apu = 0;
 		double apuSum = 0;
-		double valorUnitario = 0;
-		double valorParcial = 0;
-		double valorCapitulo = 0;
-		double subtotalSubproyecto = 0;
-		double totalProyecto = 0;
 		String elementos = "";
-		String elementosAux = "";
 		Proyecto proyecto = servicio.obtenerProyectoPorId(id); //se obtiene el proyecto
 		List<Subproyecto> subproyectos = subproyectoServicio.listarTodosLosSubproyectosDeUnProyecto(proyecto);
 		for (Subproyecto subproyecto : subproyectos) {
-			subtotalSubproyecto = 0;
 			item = 0;
 			elementos += "<tr><td colspan='7'>" + subproyecto.getNombre() + "</td></tr>";
 			List<ItemSubproyecto> itemSubproyectos = itemSubproyectoServicio.listarTodosLosItemsDeUnSubproyecto(subproyecto);
 			for (ItemSubproyecto itemSubproyecto : itemSubproyectos) {
-				valorCapitulo = 0;
 				
 				item += 1.0;
 				apu = 0;
 				apuSum = 0.1;
+				elementos += "<tr><td>"+ item +"</td><td>" + itemSubproyecto.getItem().getNombre() + "</td><td></td><td></td><td></td><td></td><td>" + itemSubproyectoServicio.obtenerValorDeUnItemSubproyecto(itemSubproyecto) + "</td></tr>";
 				List<APUItemSubproyecto> apuItemSubproyectos = apuItemSubproyectoServicio.listarTodosLosAPUDeUnItemDeUnSubproyecto(itemSubproyecto);
 				for (APUItemSubproyecto apuItemSubproyecto : apuItemSubproyectos) {
 					subItem = item;
 					apu += apuSum;
-					valorUnitario = 0;
-					List<MaterialAPUItemSubproyecto> materiales = materialAPUItemSubproyectoServicio.listarTodosLosMaterialesDeUnAPU(apuItemSubproyecto);
-					valorUnitario += materiales.stream().mapToDouble(MaterialAPUItemSubproyecto::getValorParcial).sum();
-					List<Transporte> transportes = transporteServicio.listarTodosLoTransportesDeUnAPU(apuItemSubproyecto);
-					valorUnitario += transportes.stream().mapToDouble(Transporte::getValorParcial).sum();
-					List<MaquinariaAPUItemSubproyecto> maquinarias = maquinariaAPUItemSubproyectoServicio.listarTodasLasMaquinariasDeUnAPU(apuItemSubproyecto);
-					valorUnitario += maquinarias.stream().mapToDouble(MaquinariaAPUItemSubproyecto::getValorParcial).sum();
-					List<ManoObraAPUItemSubproyecto> manoObras = manoObraAPUItemSubproyectoServicio.listarTodasLasManosDeObraDeUnAPU(apuItemSubproyecto);
-					valorUnitario += manoObras.stream().mapToDouble(ManoObraAPUItemSubproyecto::getValorParcial).sum();
-					valorUnitario = Math.round(valorUnitario * 100d) / 100d;
-					valorParcial = valorUnitario * apuItemSubproyecto.getCantidad();
-					valorParcial = Math.round(valorParcial * 100d) / 100d;
-					valorCapitulo += valorParcial;
 					if (apu == 1) {
 						apu = 0.10;
 						apuSum = apuSum/10;
@@ -154,19 +134,16 @@ public class ProyectoControlador {
 					
 					subItem += apu;
 					
-					elementosAux += "<tr><td>"+ subItem +"</td><td>" + apuItemSubproyecto.getApu().getNombre() + "</td><td>"+ apuItemSubproyecto.getApu().getUnidad() +
-							"</td><td>" + apuItemSubproyecto.getCantidad() + "</td><td>" + valorUnitario + "</td><td>" + valorParcial + "</td><td></td></tr>";
+					elementos += "<tr><td>"+ subItem +"</td><td>" + apuItemSubproyecto.getApu().getNombre() + "</td><td>"+ apuItemSubproyecto.getApu().getUnidad() +
+							"</td><td>" + apuItemSubproyecto.getCantidad() + "</td><td>" + apuItemSubproyectoServicio.obtenerValorUnitarioDeUnAPUItemSubproyecto(apuItemSubproyecto) + "</td><td>" + apuItemSubproyectoServicio.obtenerValorDeUnAPUItemSubproyecto(apuItemSubproyecto) + "</td><td></td></tr>";
 				}
 				
-				item = 	Math.floor(item);
-				elementos += "<tr><td>"+ item +"</td><td>" + itemSubproyecto.getItem().getNombre() + "</td><td></td><td></td><td></td><td></td><td>" + valorCapitulo + "</td></tr>" + elementosAux;
-				subtotalSubproyecto += valorCapitulo;
-				elementosAux = "";
+				
 			}
-			elementos += "<tr><td></td><td class='texto-izquierda' colspan = '5'>SUBTOTAL " + subproyecto.getNombre() + "</td><td>" + subtotalSubproyecto + "</td></tr>";
-			totalProyecto += subtotalSubproyecto;
+			elementos += "<tr><td></td><td class='texto-izquierda' colspan = '5'>SUBTOTAL " + subproyecto.getNombre() + "</td><td>" + subproyectoServicio.obtenerValorDeUnSubproyecto(subproyecto) + "</td></tr>";
+			
 		}
-		elementos += "<tr><td></td><td class='texto-izquierda' colspan = '5'>COSTO TOTAL DEL PROYECTO</td><td>" + totalProyecto + "</td></tr>";
+		elementos += "<tr><td></td><td class='texto-izquierda' colspan = '5'>COSTO TOTAL DEL PROYECTO</td><td>" + servicio.obtenerValorDeUnProyecto(proyecto) + "</td></tr>";
 	
 		model.addAttribute("proyecto", proyecto);
 		model.addAttribute("subproyectos", subproyectos);

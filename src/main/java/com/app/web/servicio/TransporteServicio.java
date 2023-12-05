@@ -47,5 +47,18 @@ public class TransporteServicio {
 		return repositorio.obtenerMaximoId();
 
 	}
+	
+	public double obtenerValorDeTansporteDeUnAPUItemSubproyecto(APUItemSubproyecto apuItemSubproyecto) {
+		 double valor = 0;
+		 List<Transporte> transportes = listarTodosLoTransportesDeUnAPU(apuItemSubproyecto);
+		 for(Transporte transporte : transportes){
+			 valor += transporte.getValorParcial();
+		 }
+		 
+		 valor = Math.round(valor * 100d)/100d;
+		 
+		return valor;
+		 
+	 }
 
 }

@@ -3,7 +3,9 @@ package com.app.web.servicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.web.entidad.ItemSubproyecto;
 import com.app.web.entidad.Proyecto;
+import com.app.web.entidad.Subproyecto;
 import com.app.web.repositorio.ProyectoRepositorio;
 
 import java.util.List;
@@ -13,7 +15,8 @@ public class ProyectoServicio {
 
 	@Autowired
     private ProyectoRepositorio repositorio;
-
+	@Autowired
+	private SubproyectoServicio subproyectoServicio;
     
 
     public List<Proyecto> listarTodosLosProyectos() {
@@ -53,6 +56,19 @@ public class ProyectoServicio {
     	
     }
     
+	public double obtenerValorDeUnProyecto(Proyecto proyecto) {
+		double valor = 0;
+		List<Subproyecto> subproyectos = subproyectoServicio.listarTodosLosSubproyectosDeUnProyecto(proyecto);
+		for (Subproyecto subproyecto : subproyectos) {
+			valor += subproyectoServicio.obtenerValorDeUnSubproyecto(subproyecto);
+
+		}
+
+		valor = Math.round(valor * 100d)/100d;
+		
+		return valor;
+
+	}
     
     
 }
